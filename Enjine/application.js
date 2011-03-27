@@ -12,6 +12,7 @@ Enjine.Application = function() {
     this.spriteManager = null;
     this.input = null;
     this.mainSprite = null;
+    this.animating = false;
     this.xDirection = 1;
     this.yDirection = 1;
     this.camera = null;
@@ -22,24 +23,37 @@ Enjine.Application.prototype = {
         
         this.spriteManager.Update(delta);
         
+        var running = false;
         this.xDirection = 0;
         this.yDirection = 0;
         
         if (this.input.IsKeyDown(Enjine.Keys.Left)) {
             this.xDirection = -1;
+            running = true;
         }
         if (this.input.IsKeyDown(Enjine.Keys.Right)) {
             this.xDirection = 1;
+            running = true;
         }
         if (this.input.IsKeyDown(Enjine.Keys.Up)) {
             this.yDirection = -1;
+            running = true;
         }
         if (this.input.IsKeyDown(Enjine.Keys.Down)) {
             this.yDirection = 1;
+            running = true;
         }
         
-        this.mainSprite.X += delta * 50 * this.xDirection;
-        this.mainSprite.Y += delta * 50 * this.yDirection;
+        if (!this.animating && running) {
+            this.animating = true;
+            this.mainSprite.PlaySequence("running", true);
+        } else if (this.animating && !running) {
+            this.animating = false;
+            this.mainSprite.PlaySequence("standing", false);
+        }
+        
+        this.mainSprite.X += delta * 75 * this.xDirection;
+        this.mainSprite.Y += delta * 75 * this.yDirection;
         
         
         if (this.mainSprite.X >= 450) {
@@ -72,11 +86,7 @@ Enjine.Application.prototype = {
         this.canvas.Initialize("canvas");
         this.timer.UpdateObject = this;
         
-        //this.SetupAnimatedSprite();
-        this.mainSprite = new Enjine.Sprite();
-        this.mainSprite.Image = img;
-        
-        this.spriteManager.Add(this.mainSprite);
+        this.SetupAnimatedSprite();
         
         this.timer.Start();
     },

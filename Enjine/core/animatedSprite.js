@@ -20,124 +20,124 @@ Enjine.AnimationSequence = function(startRow, startColumn, endRow, endColumn) {
 }
 
 Enjine.AnimatedSprite = function() {
-    var currentFrameX = 0;
-    var currentFrameY = 0;
-    var lastElapsed;
-    this.FramesPerSecond = 0;
+    this.CurrentFrameX = 0;
+    this.CurrentFrameY = 0;
+    this.LastElapsed = 0;
+    this.FramesPerSecond = 1 / 20;
     this.FrameWidth = 0;
     this.FrameHeight = 0;
-    var currentSequence = null;
-    var playing = false;
-    var looping = false;
-    var rows = 0;
-    var columns = 0;
+    this.CurrentSequence = null;
+    this.Playing = false;
+    this.Looping = false;
+    this.Rows = 0;
+    this.Columns = 0;
     
     //cheesy dictionary hack to make animation sequences more accessible
-    var sequences = new Object();
+    this.Sequences = new Object();
 }
 
 Enjine.AnimatedSprite.prototype = new Enjine.Sprite();
 
 Enjine.AnimatedSprite.prototype.Update = function(delta) {
-    if (currentSequence.SingleFrame) {
+    if (this.CurrentSequence.SingleFrame) {
         return;
     }
-    if (!playing) {
+    if (!this.Playing) {
         return;
     }
 
-    lastElapsed -= delta;
+    this.LastElapsed -= delta;
     
-    if (lastElapsed > 0) {
+    if (this.LastElapsed > 0) {
         return;
     }
     
-    lastElapsed = this.FramesPerSecond;
-    currentFrameX += this.FrameWidth;
+    this.LastElapsed = this.FramesPerSecond;
+    this.CurrentFrameX += this.FrameWidth;
     
     //increment the frame
-    if (currentFrameX > (this.Image.width - this.FrameWidth)) {
-        currentFrameX = 0;
-        currentFrameY += this.FrameHeight;
+    if (this.CurrentFrameX > (this.Image.width - this.FrameWidth)) {
+        this.CurrentFrameX = 0;
+        this.CurrentFrameY += this.FrameHeight;
         
-        if (currentFrameY > (this.Image.height - this.FrameHeight)) {
-            currentFrameY = 0;
+        if (this.CurrentFrameY > (this.Image.height - this.FrameHeight)) {
+            this.CurrentFrameY = 0;
         }
     }
     
     //check if it's at the end of the animation sequence
     var seqEnd = false;
-    if ((currentFrameX > (currentSequence.EndColumn * this.FrameWidth)) && (currentFrameY == (currentSequence.EndRow * this.FrameHeight))) {
+    if ((this.CurrentFrameX > (this.CurrentSequence.EndColumn * this.FrameWidth)) && (this.CurrentFrameY == (this.CurrentSequence.EndRow * this.FrameHeight))) {
         seqEnd = true;
-    } else if (currentFrameX == 0 && (currentFrameY > (currentSequence.EndRow * this.FrameHeight))) {
+    } else if (this.CurrentFrameX == 0 && (this.CurrentFrameY > (this.CurrentSequence.EndRow * this.FrameHeight))) {
         seqEnd = true;
     }
     
     //go back to the beginning if looping, otherwise stop playing
     if (seqEnd) {
-        if (looping) {
-            currentFrameX = currentSequence.StartColumn * this.FrameWidth;
-            currentFrameY = currentSequence.StartRow * this.FrameHeight;
+        if (this.Looping) {
+            this.CurrentFrameX = this.CurrentSequence.StartColumn * this.FrameWidth;
+            this.CurrentFrameY = this.CurrentSequence.StartRow * this.FrameHeight;
         } else {
-            playing = false;
+            this.Playing = false;
         }
     }
 }
 
 Enjine.AnimatedSprite.prototype.Draw = function(context, camera) {
-    context.drawImage(this.Image, currentFrameX, currentFrameY, this.FrameWidth, this.FrameHeight, this.X - camera.X, this.Y - camera.Y, this.FrameWidth, this.FrameHeight);
+    context.drawImage(this.Image, this.CurrentFrameX, this.CurrentFrameY, this.FrameWidth, this.FrameHeight, this.X - camera.X, this.Y - camera.Y, this.FrameWidth, this.FrameHeight);
 }
 
 Enjine.AnimatedSprite.prototype.PlaySequence = function(seqName, loop) {
-    playing = true;
-    looping = loop;
-    currentSequence = sequences["seq_" + seqName];
-    currentFrameX = currentSequence.StartColumn;
-    currentFrameY = currentSequence.StartRow;
+    this.Playing = true;
+    this.Looping = loop;
+    this.CurrentSequence = this.Sequences["seq_" + seqName];
+    this.CurrentFrameX = this.CurrentSequence.StartColumn;
+    this.CurrentFrameY = this.CurrentSequence.StartRow;
 }
 
 Enjine.AnimatedSprite.prototype.StopLooping = function() {
-    looping = false;
+    this.Looping = false;
 }
 
 Enjine.AnimatedSprite.prototype.StopPlaying = function() {
-    playing = false;
+    this.Playing = false;
 }
 
 Enjine.AnimatedSprite.prototype.SetFrameWidth = function(width) {
     this.FrameWidth = width;
-    rows = this.Image.width / this.FrameWidth;
+    this.Rows = this.Image.width / this.FrameWidth;
 }
 
 Enjine.AnimatedSprite.prototype.SetFrameHeight = function(height) {
     this.FrameHeight = height;
-    columns = this.Image.height / this.FrameHeight;
+    this.Columns = this.Image.height / this.FrameHeight;
 }
 
 Enjine.AnimatedSprite.prototype.SetColumnCount = function(columnCount) {
     this.FrameWidth = this.Image.width / columnCount;
-    columns = columnCount;
+    this.Columns = columnCount;
 }
 
 Enjine.AnimatedSprite.prototype.SetRowCount = function(rowCount) {
     this.FrameHeight = this.Image.height / rowCount;
-    rows = rowCount;
+    this.Rows = rowCount;
 }
 
 Enjine.AnimatedSprite.prototype.AddExistingSequence = function(name, sequence) {
-    sequences["seq_" + name] = sequence;
+    this.Sequences["seq_" + name] = sequence;
 }
 
 Enjine.AnimatedSprite.prototype.AddNewSequence = function(name, startRow, startColumn, endRow, endColumn) {
-    sequences["seq_" + name] = new AnimationSequence(startRow, startColumn, endRow, endColumn);
+    this.Sequences["seq_" + name] = new Enjine.AnimationSequence(startRow, startColumn, endRow, endColumn);
 }
 
 Enjine.AnimatedSprite.prototype.DeleteSequence = function(name) {
-    if (sequences["seq_" + name]  != null) {
-        delete sequences["seq_" + name];
+    if (this.Sequences["seq_" + name]  != null) {
+        delete this.Sequences["seq_" + name];
     }
 }
 
 Enjine.AnimatedSprite.prototype.ClearSequences = function() {
-    delete sequences;
+    delete this.Sequences;
 }
