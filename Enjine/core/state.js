@@ -5,7 +5,11 @@
 
 Enjine.GameStateContext = function(defaultState) {
     this.State = null;
-    this.ChangeState(defaulState);
+    
+    if (defaultState != null) {
+        this.State == defaultState;
+        this.State.Enter();
+    }
 }
 
 Enjine.GameStateContext.prototype = {
@@ -35,7 +39,7 @@ Enjine.GameState = function() { }
 Engine.GameState.prototype = {
     Enter: function () {},
     Exit: function() {},
-    Update: function() {},
-    Draw: function() {},
-    CheckForChange: function() {}
+    Update: function(delta) {},
+    Draw: function(context) {},
+    CheckForChange: function(context) {}
 }

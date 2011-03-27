@@ -10,7 +10,6 @@ Enjine.Application = function() {
     this.canvas = null;
     this.timer = null;
     this.spriteManager = null;
-    this.input = null;
     this.mainSprite = null;
     this.animating = false;
     this.xDirection = 1;
@@ -27,19 +26,19 @@ Enjine.Application.prototype = {
         this.xDirection = 0;
         this.yDirection = 0;
         
-        if (this.input.IsKeyDown(Enjine.Keys.Left)) {
+        if (Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.Left)) {
             this.xDirection = -1;
             running = true;
         }
-        if (this.input.IsKeyDown(Enjine.Keys.Right)) {
+        if (Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.Right)) {
             this.xDirection = 1;
             running = true;
         }
-        if (this.input.IsKeyDown(Enjine.Keys.Up)) {
+        if (Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.Up)) {
             this.yDirection = -1;
             running = true;
         }
-        if (this.input.IsKeyDown(Enjine.Keys.Down)) {
+        if (Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.Down)) {
             this.yDirection = 1;
             running = true;
         }
@@ -80,8 +79,7 @@ Enjine.Application.prototype = {
         this.timer = new Enjine.GameTimer();
         this.spriteManager = new Enjine.SpriteManager();
         this.camera = new Enjine.Camera();
-        this.input = new Enjine.KeyboardInput();
-        this.input.Initialize();
+        Enjine.KeyboardInput.Initialize();
         
         this.canvas.Initialize("canvas");
         this.timer.UpdateObject = this;

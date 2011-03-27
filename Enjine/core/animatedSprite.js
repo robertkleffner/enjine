@@ -1,7 +1,6 @@
 /**
-	Subclass that extends the regular sprite with animation capability.
-	Code by Rob Kleffner, 2011
-*/
+    Class to represent an uninterrupted set of frames to animate.
+*/ 
 
 Enjine.AnimationSequence = function(startRow, startColumn, endRow, endColumn) {
     this.StartRow = startRow;
@@ -18,6 +17,11 @@ Enjine.AnimationSequence = function(startRow, startColumn, endRow, endColumn) {
         this.SingleFrame = true;
     }
 }
+
+/**
+	Subclass that extends the regular sprite with animation capability.
+	Code by Rob Kleffner, 2011
+*/
 
 Enjine.AnimatedSprite = function() {
     this.CurrentFrameX = 0;

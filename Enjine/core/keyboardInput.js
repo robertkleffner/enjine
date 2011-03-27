@@ -10,11 +10,9 @@ Enjine.Keys = {
     Down: 40
 };
 
-Enjine.KeyboardInput = function() {
-    pressed = new Array();  
-}
-
-Enjine.KeyboardInput.prototype = {
+Enjine.KeyboardInput = {
+    Pressed: new Array(),
+    
     Initialize: function() {
         var self = this;
         document.onkeydown = function(event) { self.KeyDownEvent(event); }
@@ -22,16 +20,16 @@ Enjine.KeyboardInput.prototype = {
     },
     
     IsKeyDown: function(key) {
-        if (pressed[key] != null)
-            return pressed[key];
+        if (this.Pressed[key] != null)
+            return this.Pressed[key];
         return false;
     },
     
     KeyDownEvent: function(event) {
-        pressed[event.keyCode] = true;
+        this.Pressed[event.keyCode] = true;
     },
     
     KeyUpEvent: function(event) {
-        pressed[event.keyCode] = false;
+        this.Pressed[event.keyCode] = false;
     }
 }
