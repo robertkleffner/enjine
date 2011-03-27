@@ -3,27 +3,35 @@
 	Code by Rob Kleffner, 2011
 */
 
+Enjine.Keys = {
+    Left: 37,
+    Up: 38,
+    Right: 39,
+    Down: 40
+};
+
 Enjine.KeyboardInput = function() {
-    this.KeysDown = null;
-    this.KeysPressed = null;
-    this.KeysUp = null;
-    
-    var self = this;
-    document.onkeydown = function(event) { self.KeyDownEvent(event); }
-    document.onkeypress = function(event) { self.KeyPressedEvent(event); }
-    document.onkeyup = function(event) { self.KeyUpEvent(event); }
+    pressed = new Array();  
 }
 
 Enjine.KeyboardInput.prototype = {
-    KeyDownEvent: function(event) {
-        this.KeysDown = event.keyCode;
+    Initialize: function() {
+        var self = this;
+        document.onkeydown = function(event) { self.KeyDownEvent(event); }
+        document.onkeyup = function(event) { self.KeyUpEvent(event); }
     },
     
-    KeyPressedEvent: function(event) {
-        this.KeysPressed = event.keyCode;
+    IsKeyDown: function(key) {
+        if (pressed[key] != null)
+            return pressed[key];
+        return false;
+    },
+    
+    KeyDownEvent: function(event) {
+        pressed[event.keyCode] = true;
     },
     
     KeyUpEvent: function(event) {
-        this.KeysUp = event.keyCode;
+        pressed[event.keyCode] = false;
     }
 }
