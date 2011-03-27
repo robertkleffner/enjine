@@ -4,19 +4,19 @@
 */
 
 Enjine.SpriteManager = function() {
-	var unsorted = true;
+	this.Unsorted = true;
 	this.Sprites = new Array();
 }
 
 Enjine.SpriteManager.prototype = {
     Add: function(sprite) {
 		this.Sprites.push(sprite);
-		unsorted = true;
+		this.Unsorted = true;
 	},
 	
 	AddRange: function(sprites) {
 		this.Sprites = this.Sprites.concat(sprites);
-		unsorted = true;
+		this.Unsorted = true;
 	},
 	
 	Clear: function() {
@@ -47,8 +47,8 @@ Enjine.SpriteManager.prototype = {
 	Draw: function(context, camera) {
 		
 		//sort the sprites based on their 'z depth' to get the correct drawing order
-		if (unsorted) {
-			unsorted = false;
+		if (this.Unsorted) {
+			this.Unsorted = false;
 			this.Sprites.sort(function(x1,x2) { return x1.ZOrder - x2.ZOrder; });
 		}
 		

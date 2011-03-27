@@ -114,16 +114,30 @@ Enjine.AnimatedSprite.prototype.SetFrameHeight = function(height) {
     columns = this.Image.height / this.FrameHeight;
 }
 
-Enjine.AnimatedSprite.prototype.AddSequence(name, startRow, startColumn, endRow, endColumn) {
+Enjine.AnimatedSprite.prototype.SetColumnCount = function(columnCount) {
+    this.FrameWidth = this.Image.width / columnCount;
+    columns = columnCount;
+}
+
+Enjine.AnimatedSprite.prototype.SetRowCount = function(rowCount) {
+    this.FrameHeight = this.Image.height / rowCount;
+    rows = rowCount;
+}
+
+Enjine.AnimatedSprite.prototype.AddExistingSequence = function(name, sequence) {
+    sequences["seq_" + name] = sequence;
+}
+
+Enjine.AnimatedSprite.prototype.AddNewSequence = function(name, startRow, startColumn, endRow, endColumn) {
     sequences["seq_" + name] = new AnimationSequence(startRow, startColumn, endRow, endColumn);
 }
 
-Enjine.AnimatedSprite.prototype.DeleteSequence(name) {
+Enjine.AnimatedSprite.prototype.DeleteSequence = function(name) {
     if (sequences["seq_" + name]  != null) {
         delete sequences["seq_" + name];
     }
 }
 
-Enjine.AnimatedSprite.prototype.ClearSequences() {
+Enjine.AnimatedSprite.prototype.ClearSequences = function() {
     delete sequences;
 }

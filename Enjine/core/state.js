@@ -4,26 +4,26 @@
 */
 
 Enjine.GameStateContext = function(defaultState) {
-    var state = null;
+    this.State = null;
     this.ChangeState(defaulState);
 }
 
 Enjine.GameStateContext.prototype = {
     ChangeState: function(newState) {
-        if (state != null) {
-            state.Exit();
+        if (this.State != null) {
+            this.State.Exit();
         }
-        state = newState;
-        state.Enter();
+        this.State = newState;
+        this.State.Enter();
     },
     
     Update: function(delta) {
-        state.CheckForChange(this);
-        state.Update(delta);
+        this.State.CheckForChange(this);
+        this.State.Update(delta);
     },
     
     Draw: function(delta) {
-        state.Draw(delta);
+        this.State.Draw(delta);
     }
 }
 

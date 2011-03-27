@@ -6,7 +6,7 @@
 Enjine.GameCanvas = function() {
 	this.Canvas = null;
 	this.Context2D = null;
-	var backBuffer = null;
+    this.BackBuffer = null;
 	this.BackBufferContext2D = null;
 }
 
@@ -14,18 +14,18 @@ Enjine.GameCanvas.prototype = {
     Initialize: function(canvasId) {
 		this.Canvas = document.getElementById(canvasId);
 		this.Context2D = this.Canvas.getContext("2d");
-		backBuffer = document.createElement("canvas");
-		backBuffer.width = this.Canvas.width;
-		backBuffer.height = this.Canvas.height;
-		this.BackBufferContext2D = backBuffer.getContext("2d");
+		this.BackBuffer = document.createElement("canvas");
+		this.BackBuffer.width = this.Canvas.width;
+		this.BackBuffer.height = this.Canvas.height;
+		this.BackBufferContext2D = this.BackBuffer.getContext("2d");
 	},
 	
     BeginDraw: function() {
-        this.BackBufferContext2D.clearRect(0, 0, backBuffer.width, backBuffer.height);
+        this.BackBufferContext2D.clearRect(0, 0, this.BackBuffer.width, this.BackBuffer.height);
         this.Context2D.clearRect(0, 0, this.Canvas.width, this.Canvas.height);
     },
     
     EndDraw: function() {
-        this.Context2D.drawImage(backBuffer, 0, 0);
+        this.Context2D.drawImage(this.BackBuffer, 0, 0);
     }
 }

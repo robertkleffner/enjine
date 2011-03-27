@@ -72,11 +72,26 @@ Enjine.Application.prototype = {
         this.canvas.Initialize("canvas");
         this.timer.UpdateObject = this;
         
+        //this.SetupAnimatedSprite();
         this.mainSprite = new Enjine.Sprite();
         this.mainSprite.Image = img;
+        
         this.spriteManager.Add(this.mainSprite);
         
         this.timer.Start();
+    },
+    
+    SetupAnimatedSprite: function() {
+        
+        this.mainSprite = new Enjine.AnimatedSprite();
+        this.mainSprite.Image = img;
+        this.mainSprite.SetColumnCount(12);
+        this.mainSprite.SetRowCount(1);
+        this.mainSprite.AddNewSequence("standing", 0, 0, 0, 0);
+        this.mainSprite.AddNewSequence("running", 0, 0, 0, 11);
+        this.mainSprite.PlaySequence("standing", false);
+        
+        this.spriteManager.Add(this.mainSprite);
     }
 }
 

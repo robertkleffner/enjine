@@ -3,4 +3,4 @@
 	Code by Rob Kleffner, 2011
 */
 
-var Enjine = new Object();
+var Enjine = {};
