@@ -7,7 +7,7 @@ Enjine.GameStateContext = function(defaultState) {
     this.State = null;
     
     if (defaultState != null) {
-        this.State == defaultState;
+        this.State = defaultState;
         this.State.Enter();
     }
 }
@@ -36,7 +36,7 @@ Enjine.GameStateContext.prototype = {
  */ 
 Enjine.GameState = function() { }
 
-Engine.GameState.prototype = {
+Enjine.GameState.prototype = {
     Enter: function () {},
     Exit: function() {},
     Update: function(delta) {},
