@@ -144,4 +144,5 @@ Enjine.AnimatedSprite.prototype.DeleteSequence = function(name) {
 
 Enjine.AnimatedSprite.prototype.ClearSequences = function() {
     delete this.Sequences;
+    this.Sequences = new Object();
 }

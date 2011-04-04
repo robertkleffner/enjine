@@ -15,7 +15,7 @@ Enjine.DrawableManager.prototype = {
 	},
 	
 	AddRange: function(objects) {
-		this.Sprites = this.Sprites.concat(objects);
+		this.Objects = this.Objects.concat(objects);
 		this.Unsorted = true;
 	},
 	

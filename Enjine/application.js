@@ -3,9 +3,6 @@
 	Code by Rob Kleffner, 2011
 */
 
-var img = new Image();
-img.src = "run.png";
-
 Enjine.Application = function() {
     this.canvas = null;
     this.timer = null;
