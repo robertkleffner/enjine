@@ -4,7 +4,7 @@
 */
 
 Enjine.TestState = function() {
-    this.spriteManager = null;
+    this.drawManager = null;
     this.mainSprite = null;
     this.animating = false;
     this.xDirection = 1;
@@ -15,19 +15,19 @@ Enjine.TestState = function() {
 Enjine.TestState.prototype = new Enjine.GameState();
 
 Enjine.TestState.prototype.Enter = function() {
-    this.spriteManager = new Enjine.SpriteManager();
+    this.drawManager = new Enjine.DrawableManager();
     this.camera = new Enjine.Camera();
     this.SetupAnimatedSprite();
 }
 
 Enjine.TestState.prototype.Exit = function() {
-    this.spriteManager.Clear();
-    delete this.spriteManager;
+    this.drawManager.Clear();
+    delete this.drawManager;
     delete this.camera;
 }
 
 Enjine.TestState.prototype.Update = function(delta) {
-    this.spriteManager.Update(delta);
+    this.drawManager.Update(delta);
         
     var running = false;
     this.xDirection = 0;
@@ -76,7 +76,7 @@ Enjine.TestState.prototype.Update = function(delta) {
 }
 
 Enjine.TestState.prototype.Draw = function(context) {
-    this.spriteManager.Draw(context, this.camera)
+    this.drawManager.Draw(context, this.camera)
 }
 
 Enjine.TestState.prototype.SetupAnimatedSprite = function() {
@@ -89,5 +89,5 @@ Enjine.TestState.prototype.SetupAnimatedSprite = function() {
     this.mainSprite.AddNewSequence("running", 0, 0, 0, 11);
     this.mainSprite.PlaySequence("standing", false);
     
-    this.spriteManager.Add(this.mainSprite);
+    this.drawManager.Add(this.mainSprite);
 }
