@@ -16,8 +16,7 @@ Enjine.TestState = function() {
 Enjine.TestState.prototype = new Enjine.GameState();
 
 Enjine.TestState.prototype.Enter = function() {
-    this.resources = new Enjine.Resources();
-    this.resources.AddImage("run", "run.png");
+    Enjine.Resources.AddImage("run", "run.png");
     
     this.drawManager = new Enjine.DrawableManager();
     this.camera = new Enjine.Camera();
@@ -86,7 +85,7 @@ Enjine.TestState.prototype.Draw = function(context) {
 Enjine.TestState.prototype.SetupAnimatedSprite = function() {
         
     this.mainSprite = new Enjine.AnimatedSprite();
-    this.mainSprite.Image = this.resources.Images["run"];
+    this.mainSprite.Image = Enjine.Resources.Images["run"];
     this.mainSprite.SetColumnCount(12);
     this.mainSprite.SetRowCount(1);
     this.mainSprite.AddNewSequence("standing", 0, 0, 0, 0);

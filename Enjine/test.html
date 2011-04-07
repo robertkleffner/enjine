@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Enjine Test</title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	</head>
 	<body>
 		<canvas id="canvas" width="600" height="400">
@@ -20,5 +21,6 @@
         <script type="text/javascript" src="core/animatedSprite.js"></script>
         <script type="text/javascript" src="testState.js"></script>
         <script type="text/javascript" src="application.js"></script>
+        <script type="text/javascript">$(document).ready((new Enjine.Application().Initialize(new Enjine.TestState())));</script>
 	</body>
 </html>

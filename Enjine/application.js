@@ -24,7 +24,7 @@ Enjine.Application.prototype = {
     Initialize: function(defaultState) {
         this.canvas = new Enjine.GameCanvas();
         this.timer = new Enjine.GameTimer();
-        Enjine.KeyboardInput.Initialize();        
+        Enjine.KeyboardInput.Initialize();      
         this.canvas.Initialize("canvas");
         this.timer.UpdateObject = this;
         
@@ -33,6 +33,3 @@ Enjine.Application.prototype = {
         this.timer.Start();
     }
 }
-
-var app = new Enjine.Application();
-app.Initialize((new Enjine.TestState()));

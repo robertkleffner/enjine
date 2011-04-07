@@ -3,12 +3,9 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.Resources = function() {
-    this.Images = new Object();
-    this.Sounds = new Object();
-}
-
-Enjine.Resources.prototype = {
+Enjine.Resources = {
+    Images: new Object(),
+    Sounds: new Object(),
 
     Destroy: function() {
         delete this.Images;
