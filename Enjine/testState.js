@@ -7,6 +7,7 @@ Enjine.TestState = function() {
     this.drawManager = null;
     this.resources = null;
     this.mainSprite = null;
+    this.otherSprite = null;
     this.animating = false;
     this.xDirection = 1;
     this.yDirection = 1;
@@ -55,27 +56,18 @@ Enjine.TestState.prototype.Update = function(delta) {
     
     if (!this.animating && running) {
         this.animating = true;
-        this.mainSprite.PlaySequence("running", true);
+        this.mainSprite.Base.PlaySequence("running", true);
     } else if (this.animating && !running) {
         this.animating = false;
-        this.mainSprite.PlaySequence("standing", false);
+        this.mainSprite.Base.PlaySequence("standing", false);
     }
     
-    this.mainSprite.X += delta * 75 * this.xDirection;
-    this.mainSprite.Y += delta * 75 * this.yDirection;
+    this.mainSprite.Base.X += delta * 75 * this.xDirection;
+    this.mainSprite.Base.Y += delta * 75 * this.yDirection;
     
-    
-    if (this.mainSprite.X >= 450) {
-        this.mainSprite.X = 450;
-    } else if (this.mainSprite.X <= 0) {
-        this.mainSprite.X = 0;
-    }
-
-    if (this.mainSprite.Y >= 250) {
-        this.mainSprite.Y = 250;
-    } else if (this.mainSprite.Y <= 0) {
-        this.mainSprite.Y = 0;
-    }
+    this.otherSprite.Update();
+    this.mainSprite.Update();
+    this.mainSprite.CheckCollision(this.otherSprite);
 }
 
 Enjine.TestState.prototype.Draw = function(context) {
@@ -91,6 +83,22 @@ Enjine.TestState.prototype.SetupAnimatedSprite = function() {
     this.mainSprite.AddNewSequence("standing", 0, 0, 0, 0);
     this.mainSprite.AddNewSequence("running", 0, 0, 0, 11);
     this.mainSprite.PlaySequence("standing", false);
+    this.mainSprite = new Enjine.Collideable(this.mainSprite, 48, 48, this.PlayerCollision);
     
-    this.drawManager.Add(this.mainSprite);
+    this.otherSprite = new Enjine.AnimatedSprite();
+    this.otherSprite.Image = Enjine.Resources.Images["run"];
+    this.otherSprite.SetColumnCount(12);
+    this.otherSprite.SetRowCount(1);
+    this.otherSprite.AddNewSequence("running", 0, 0, 0, 11);
+    this.otherSprite.PlaySequence("running", true);
+    this.otherSprite.X = 70;
+    this.otherSprite.Y = 70;
+    this.otherSprite = new Enjine.Collideable(this.otherSprite, 48, 48, this.PlayerCollision);
+    
+    this.drawManager.Add(this.mainSprite.Base);
+    this.drawManager.Add(this.otherSprite.Base);
+}
+
+Enjine.TestState.prototype.PlayerCollision = function(other) {
+
 }

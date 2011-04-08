@@ -29,16 +29,16 @@ Enjine.Collideable.prototype = {
         var top1 = this.Y, top2 = other.Y;
         var bottom1 = (this.Y + this.Height), bottom2 = other.Y + other.Height;
         
-        if (bottom1 <= top2) {
+        if (bottom1 < top2) {
             return;
         }
-        if (top1 >= bottom2) {
+        if (top1 > bottom2) {
             return;
         }
-        if (right1 <= left2) {
+        if (right1 < left2) {
             return;
         }
-        if (left1 >= right2) {
+        if (left1 > right2) {
             return;
         }
         
