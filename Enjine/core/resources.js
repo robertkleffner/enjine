@@ -40,8 +40,7 @@ Enjine.Resources = {
     //***********************
     //Sounds
     AddSound: function(name, src) {
-        var tempSound = new Audio(src);
-        this.Sounds[name] = tempSound;
+        this.Sounds[name] = new Audio(src);
     },
     
     AddSounds: function(array) {

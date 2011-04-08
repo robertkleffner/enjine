@@ -18,10 +18,12 @@ Enjine.TestState.prototype = new Enjine.GameState();
 
 Enjine.TestState.prototype.Enter = function() {
     Enjine.Resources.AddImage("run", "run.png");
+    Enjine.Resources.AddSound("pipe", "pipe.wav");
     
     this.drawManager = new Enjine.DrawableManager();
     this.camera = new Enjine.Camera();
     this.SetupAnimatedSprite();
+    Enjine.Resources.Sounds["pipe"].play();
 }
 
 Enjine.TestState.prototype.Exit = function() {
@@ -100,5 +102,5 @@ Enjine.TestState.prototype.SetupAnimatedSprite = function() {
 }
 
 Enjine.TestState.prototype.PlayerCollision = function(other) {
-
+    
 }
