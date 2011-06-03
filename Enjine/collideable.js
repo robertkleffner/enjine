@@ -7,27 +7,25 @@ $e.Collideable = function(obj, width, height, collisionEvent) {
     this.Base = obj;
     this.x = obj.x;
     this.y = obj.y;
-    this.Width = width;
-    this.Height = height;
+    this.width = width;
+    this.height = height;
     
     if (collisionEvent != null) {
-        this.CollisionEvent = collisionEvent;
+        this.collisionEvent = collisionEvent;
     } else {
-        this.CollisionEvent = function() {}
+        this.collisionEvent = function() {}
     }
-}
+};
 
 $e.Collideable.prototype = {
-    Update: function() {
+    update: function() {
         this.x = this.Base.x;
         this.y = this.Base.y;
     },
     
-    CheckCollision: function(other) {
-        var left1 = this.x, left2 = other.x;
-        var right1 = (this.x + this.Width), right2 = (other.x + other.Width);
-        var top1 = this.y, top2 = other.y;
-        var bottom1 = (this.y + this.Height), bottom2 = other.y + other.Height;
+    checkCollision: function(other) {
+        var left1 = this.x, left2 = other.x, right1 = (this.x + this.width), right2 = (other.x + other.width),
+			top1 = this.y, top2 = other.y, bottom1 = (this.y + this.height), bottom2 = other.y + other.height;
         
         if (bottom1 < top2) {
             return;
@@ -43,7 +41,7 @@ $e.Collideable.prototype = {
         }
         
         //collision, fire the events!
-        this.CollisionEvent(other);
-        other.CollisionEvent(this);
+        this.collisionEvent(other);
+        other.collisionEvent(this);
     }
-}
+};

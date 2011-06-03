@@ -4,14 +4,14 @@
 */
 
 $e.FrameSprite = function() {
-    this.FrameX = 0;
-    this.FrameY = 0;
-	this.FrameWidth = 0;
-    this.FrameHeight = 0;
-}
+    this.frameX = 0;
+    this.frameY = 0;
+	this.frameWidth = 0;
+    this.frameHeight = 0;
+};
 
 $e.FrameSprite.prototype = new $e.Sprite();
 
 $e.FrameSprite.prototype.draw = function(context, camera) {
-    context.drawImage(this.image, this.FrameX, this.FrameY, this.FrameWidth, this.FrameHeight, this.x - camera.x, this.y - camera.y, this.FrameWidth, this.FrameHeight);
-}
+    context.drawImage(this.image, this.frameX, this.frameY, this.frameWidth, this.frameHeight, this.x - camera.x, this.y - camera.y, this.frameWidth, this.frameHeight);
+};

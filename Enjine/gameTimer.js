@@ -4,30 +4,30 @@
 */
 
 $e.GameTimer = function() {
-    this.FramesPerSecond = 1000 / 30;
-	this.LastTime = 0;
-    this.IntervalFunc = null;
-    this.UpdateObject = null;
+    this.framesPerSecond = 1000 / 30;
+	this.lastTime = 0;
+    this.intervalFunc = null;
+    this.updateObject = null;
 }
 
 $e.GameTimer.prototype = {
-    Start: function() {
-        this.LastTime = new Date().getTime();
+    start: function() {
+        this.lastTime = new Date().getTime();
         var self = this;
-        this.IntervalFunc = setInterval(function() { self.Tick() }, this.FramesPerSecond);
+        this.intervalFunc = setInterval(function() { self.tick() }, this.framesPerSecond);
     },
     
-    Tick: function() {
-        if (this.UpdateObject != null) {
+    tick: function() {
+        if (this.updateObject != null) {
             var newTime = new Date().getTime();
-    		var delta = (newTime - this.LastTime) / 1000;
-    		this.LastTime = newTime;
+    		var delta = (newTime - this.lastTime) / 1000;
+    		this.lastTime = newTime;
             
-            this.UpdateObject.Update(delta);
+            this.updateObject.update(delta);
         }
     },
     
-    Stop: function() {
-        clearInterval(this.IntervalFunc);
+    stop: function() {
+        clearInterval(this.intervalFunc);
     }
 }

@@ -4,54 +4,54 @@
 */
 
 $e.DrawableManager = function() {
-	this.Unsorted = true;
-	this.Objects = [];
+	this.unsorted = true;
+	this.objects = [];
 }
 
 $e.DrawableManager.prototype = {
-    Add: function(object) {
-		this.Objects.push(object);
-		this.Unsorted = true;
+    add: function(object) {
+		this.objects.push(object);
+		this.unsorted = true;
 	},
 	
-	AddRange: function(objects) {
-		this.Objects = this.Objects.concat(objects);
-		this.Unsorted = true;
+	addRange: function(objects) {
+		this.objects = this.objects.concat(objects);
+		this.unsorted = true;
 	},
 	
-	Clear: function() {
-		this.Objects.splice(0, this.Objects.length);
+	clear: function() {
+		this.objects.splice(0, this.objects.length);
 	},
     
-    Contains: function(obj) {
-        var i = this.Objects.length;
+    contains: function(obj) {
+        var i = this.objects.length;
         while (i--) {
-            if (this.Objects[i] === obj) {
+            if (this.objects[i] === obj) {
                 return true;
             }
         }
         return false;
     },
 	
-	Remove: function(object) {
-		var index = this.Objects.indexOf(object);
-		this.Objects.splice(index, 1);
+	remove: function(object) {
+		var index = this.objects.indexOf(object);
+		this.objects.splice(index, 1);
 	},
 	
-	RemoveAt: function(index) {
-		this.Objects.splice(index, 1);
+	removeAt: function(index) {
+		this.objects.splice(index, 1);
 	},
 	
-	RemoveRange: function(index, length) {
-		this.Objects.splice(index, length);
+	removeRange: function(index, len) {
+		this.objects.splice(index, len);
 	},
     
-    RemoveList: function(items) {
+    removeList: function(items) {
         var i = 0, j = 0;
         for (j = 0; j < items.length; i++) {
-            for (i = 0; i < this.Objects.length; i++) {
-                if (this.Objects[i] === items[j]) {
-                    this.Objects.splice(i, 1);
+            for (i = 0; i < this.objects.length; i++) {
+                if (this.objects[i] === items[j]) {
+                    this.objects.splice(i, 1);
                     items.splice(j, 1);
                     j--;
                     break;
@@ -60,11 +60,11 @@ $e.DrawableManager.prototype = {
         }
     },
 	
-	Update: function(delta) {
+	update: function(delta) {
         var i = 0;
-		for (i = 0; i < this.Objects.length; i++) {
-			if (this.Objects[i].Update) {
-				this.Objects[i].Update(delta);
+		for (i = 0; i < this.objects.length; i++) {
+			if (this.objects[i].update) {
+				this.objects[i].update(delta);
 			}
 		}
 	},
@@ -72,16 +72,16 @@ $e.DrawableManager.prototype = {
 	draw: function(context, camera) {
 		
 		//sort the sprites based on their 'z depth' to get the correct drawing order
-		if (this.Unsorted) {
-			this.Unsorted = false;
-			this.Objects.sort(function(x1,x2) { return x1.zOrder - x2.zOrder; });
+		if (this.unsorted) {
+			this.unsorted = false;
+			this.objects.sort(function(x1,x2) { return x1.zOrder - x2.zOrder; });
 		}
 		
         var i = 0;
-		for (i = 0; i < this.Objects.length; i++) {
-			if (this.Objects[i].draw) {
-				this.Objects[i].draw(context, camera);
+		for (i = 0; i < this.objects.length; i++) {
+			if (this.objects[i].draw) {
+				this.objects[i].draw(context, camera);
             }
 		}
 	}
-}
+};

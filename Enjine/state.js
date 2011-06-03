@@ -1,35 +1,35 @@
 /**
-	Simple State pattern implementation for game states.
+	Simple state pattern implementation for game states.
 	Code by Rob Kleffner, 2011
 */
 
 $e.GameStateContext = function(defaultState) {
-    this.State = null;
+    this.state = null;
     
     if (defaultState != null) {
-        this.State = defaultState;
-        this.State.Enter();
+        this.state = defaultState;
+        this.state.enter();
     }
-}
+};
 
 $e.GameStateContext.prototype = {
-    ChangeState: function(newState) {
-        if (this.State != null) {
-            this.State.Exit();
+    changeState: function(newState) {
+        if (this.state != null) {
+            this.state.exit();
         }
-        this.State = newState;
-        this.State.Enter();
+        this.state = newState;
+        this.state.enter();
     },
     
-    Update: function(delta) {
-        this.State.CheckForChange(this);
-        this.State.Update(delta);
+    update: function(delta) {
+        this.state.checkForChange(this);
+        this.state.update(delta);
     },
     
     draw: function(delta) {
-        this.State.draw(delta);
+        this.state.draw(delta);
     }
-}
+};
 
 /**
  * Base game state class to at least ensure that all the functions exist.
@@ -37,9 +37,9 @@ $e.GameStateContext.prototype = {
 $e.GameState = function() { }
 
 $e.GameState.prototype = {
-    Enter: function () {},
-    Exit: function() {},
-    Update: function(delta) {},
+    enter: function () {},
+    exit: function() {},
+    update: function(delta) {},
     draw: function(context) {},
-    CheckForChange: function(context) {}
-}
+    checkForChange: function(context) {}
+};

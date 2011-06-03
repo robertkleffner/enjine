@@ -7,29 +7,29 @@ $e.Application = function() {
     this.canvas = null;
     this.timer = null;
     this.stateContext = null;
-}
+};
 
 $e.Application.prototype = {
-    Update: function(delta) {
+    update: function(delta) {
         
-        this.stateContext.Update(delta);
+        this.stateContext.update(delta);
         
-        this.canvas.BeginDraw();
+        this.canvas.beginDraw();
         
-        this.stateContext.draw(this.canvas.BackBufferContext2D);
+        this.stateContext.draw(this.canvas.backBufferContext2D);
         
-        this.canvas.EndDraw();
+        this.canvas.endDraw();
     },
     
-    Initialize: function(defaultState, resWidth, resHeight) {
+    initialize: function(defaultState, resWidth, resHeight) {
         this.canvas = new $e.GameCanvas();
         this.timer = new $e.GameTimer();
-        $e.Keyboard.Initialize();      
-        this.canvas.Initialize("canvas", resWidth, resHeight);
-        this.timer.UpdateObject = this;
+        $e.Keyboard.initialize();      
+        this.canvas.initialize("canvas", resWidth, resHeight);
+        this.timer.updateObject = this;
         
         this.stateContext = new $e.GameStateContext(defaultState);
         
-        this.timer.Start();
+        this.timer.start();
     }
-}
+};
