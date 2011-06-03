@@ -2,7 +2,7 @@
     Class to represent an uninterrupted set of frames to animate.
 */ 
 
-Enjine.AnimationSequence = function(startRow, startColumn, endRow, endColumn) {
+$e.AnimationSequence = function(startRow, startColumn, endRow, endColumn) {
     this.StartRow = startRow;
     this.StartColumn = startColumn;
     this.EndRow = endRow;
@@ -23,7 +23,7 @@ Enjine.AnimationSequence = function(startRow, startColumn, endRow, endColumn) {
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.AnimatedSprite = function() {
+$e.AnimatedSprite = function() {
     this.LastElapsed = 0;
     this.FramesPerSecond = 1 / 20;
     this.CurrentSequence = null;
@@ -36,9 +36,9 @@ Enjine.AnimatedSprite = function() {
     this.Sequences = new Object();
 }
 
-Enjine.AnimatedSprite.prototype = new Enjine.FrameSprite();
+$e.AnimatedSprite.prototype = new $e.FrameSprite();
 
-Enjine.AnimatedSprite.prototype.Update = function(delta) {
+$e.AnimatedSprite.prototype.Update = function(delta) {
     if (this.CurrentSequence.SingleFrame) {
         return;
     }
@@ -84,7 +84,7 @@ Enjine.AnimatedSprite.prototype.Update = function(delta) {
     }
 }
 
-Enjine.AnimatedSprite.prototype.PlaySequence = function(seqName, loop) {
+$e.AnimatedSprite.prototype.PlaySequence = function(seqName, loop) {
     this.Playing = true;
     this.Looping = loop;
     this.CurrentSequence = this.Sequences["seq_" + seqName];
@@ -92,49 +92,49 @@ Enjine.AnimatedSprite.prototype.PlaySequence = function(seqName, loop) {
     this.FrameY = this.CurrentSequence.StartRow * this.FrameHeight;
 }
 
-Enjine.AnimatedSprite.prototype.StopLooping = function() {
+$e.AnimatedSprite.prototype.StopLooping = function() {
     this.Looping = false;
 }
 
-Enjine.AnimatedSprite.prototype.StopPlaying = function() {
+$e.AnimatedSprite.prototype.StopPlaying = function() {
     this.Playing = false;
 }
 
-Enjine.AnimatedSprite.prototype.SetFrameWidth = function(width) {
+$e.AnimatedSprite.prototype.SetFrameWidth = function(width) {
     this.FrameWidth = width;
     this.Rows = this.Image.width / this.FrameWidth;
 }
 
-Enjine.AnimatedSprite.prototype.SetFrameHeight = function(height) {
+$e.AnimatedSprite.prototype.SetFrameHeight = function(height) {
     this.FrameHeight = height;
     this.Columns = this.Image.height / this.FrameHeight;
 }
 
-Enjine.AnimatedSprite.prototype.SetColumnCount = function(columnCount) {
+$e.AnimatedSprite.prototype.SetColumnCount = function(columnCount) {
     this.FrameWidth = this.Image.width / columnCount;
     this.Columns = columnCount;
 }
 
-Enjine.AnimatedSprite.prototype.SetRowCount = function(rowCount) {
+$e.AnimatedSprite.prototype.SetRowCount = function(rowCount) {
     this.FrameHeight = this.Image.height / rowCount;
     this.Rows = rowCount;
 }
 
-Enjine.AnimatedSprite.prototype.AddExistingSequence = function(name, sequence) {
+$e.AnimatedSprite.prototype.AddExistingSequence = function(name, sequence) {
     this.Sequences["seq_" + name] = sequence;
 }
 
-Enjine.AnimatedSprite.prototype.AddNewSequence = function(name, startRow, startColumn, endRow, endColumn) {
-    this.Sequences["seq_" + name] = new Enjine.AnimationSequence(startRow, startColumn, endRow, endColumn);
+$e.AnimatedSprite.prototype.AddNewSequence = function(name, startRow, startColumn, endRow, endColumn) {
+    this.Sequences["seq_" + name] = new $e.AnimationSequence(startRow, startColumn, endRow, endColumn);
 }
 
-Enjine.AnimatedSprite.prototype.DeleteSequence = function(name) {
+$e.AnimatedSprite.prototype.DeleteSequence = function(name) {
     if (this.Sequences["seq_" + name]  != null) {
         delete this.Sequences["seq_" + name];
     }
 }
 
-Enjine.AnimatedSprite.prototype.ClearSequences = function() {
+$e.AnimatedSprite.prototype.ClearSequences = function() {
     delete this.Sequences;
     this.Sequences = new Object();
 }

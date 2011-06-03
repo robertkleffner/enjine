@@ -3,10 +3,10 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.Drawable = function() {
+$e.Drawable = function() {
     this.ZOrder = 0;
 }
 
-Enjine.Drawable.prototype = {
+$e.Drawable.prototype = {
     Draw: function(context) { }
 }

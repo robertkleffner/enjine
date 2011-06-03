@@ -3,12 +3,12 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.DrawableManager = function() {
+$e.DrawableManager = function() {
 	this.Unsorted = true;
 	this.Objects = [];
 }
 
-Enjine.DrawableManager.prototype = {
+$e.DrawableManager.prototype = {
     Add: function(object) {
 		this.Objects.push(object);
 		this.Unsorted = true;

@@ -3,7 +3,7 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.SpriteFont = function(strings, image, letterWidth, letterHeight, letters) {
+$e.SpriteFont = function(strings, image, letterWidth, letterHeight, letters) {
     this.Image = image;
     this.Letters = letters;
     this.LetterWidth = letterWidth;
@@ -11,9 +11,9 @@ Enjine.SpriteFont = function(strings, image, letterWidth, letterHeight, letters)
     this.Strings = strings;
 };
 
-Enjine.SpriteFont.prototype = new Enjine.Drawable();
+$e.SpriteFont.prototype = new $e.Drawable();
 
-Enjine.SpriteFont.prototype.Draw = function(context, camera) {
+$e.SpriteFont.prototype.Draw = function(context, camera) {
     for (var s = 0; s < this.Strings.length; s++) {
         var string = this.Strings[s];
         for (var i = 0; i < string.String.length; i++) {

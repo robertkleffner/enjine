@@ -3,7 +3,7 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.Resources = {
+$e.Resources = {
     Images: {},
     Sounds: {},
 

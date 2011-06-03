@@ -3,7 +3,7 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.Camera = function() {
+$e.Camera = function() {
 	this.X = 0;
 	this.Y = 0;
 }

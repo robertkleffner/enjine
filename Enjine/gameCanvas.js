@@ -3,14 +3,14 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.GameCanvas = function() {
+$e.GameCanvas = function() {
 	this.Canvas = null;
 	this.Context2D = null;
     this.BackBuffer = null;
 	this.BackBufferContext2D = null;
 }
 
-Enjine.GameCanvas.prototype = {
+$e.GameCanvas.prototype = {
     Initialize: function(canvasId, resWidth, resHeight) {
 		this.Canvas = document.getElementById(canvasId);
 		this.Context2D = this.Canvas.getContext("2d");

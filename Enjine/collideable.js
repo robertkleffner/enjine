@@ -3,7 +3,7 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.Collideable = function(obj, width, height, collisionEvent) {
+$e.Collideable = function(obj, width, height, collisionEvent) {
     this.Base = obj;
     this.X = obj.X;
     this.Y = obj.Y;
@@ -17,7 +17,7 @@ Enjine.Collideable = function(obj, width, height, collisionEvent) {
     }
 }
 
-Enjine.Collideable.prototype = {
+$e.Collideable.prototype = {
     Update: function() {
         this.X = this.Base.X;
         this.Y = this.Base.Y;

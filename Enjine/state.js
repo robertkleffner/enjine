@@ -3,7 +3,7 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.GameStateContext = function(defaultState) {
+$e.GameStateContext = function(defaultState) {
     this.State = null;
     
     if (defaultState != null) {
@@ -12,7 +12,7 @@ Enjine.GameStateContext = function(defaultState) {
     }
 }
 
-Enjine.GameStateContext.prototype = {
+$e.GameStateContext.prototype = {
     ChangeState: function(newState) {
         if (this.State != null) {
             this.State.Exit();
@@ -34,9 +34,9 @@ Enjine.GameStateContext.prototype = {
 /**
  * Base game state class to at least ensure that all the functions exist.
  */ 
-Enjine.GameState = function() { }
+$e.GameState = function() { }
 
-Enjine.GameState.prototype = {
+$e.GameState.prototype = {
     Enter: function () {},
     Exit: function() {},
     Update: function(delta) {},

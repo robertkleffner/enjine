@@ -3,14 +3,14 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.GameTimer = function() {
+$e.GameTimer = function() {
     this.FramesPerSecond = 1000 / 30;
 	this.LastTime = 0;
     this.IntervalFunc = null;
     this.UpdateObject = null;
 }
 
-Enjine.GameTimer.prototype = {
+$e.GameTimer.prototype = {
     Start: function() {
         this.LastTime = new Date().getTime();
         var self = this;

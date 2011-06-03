@@ -3,14 +3,14 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.Sprite = function() {
+$e.Sprite = function() {
 	this.X = 0;
 	this.Y = 0;
 	this.Image = null;
 }
 
-Enjine.Sprite.prototype = new Enjine.Drawable();
+$e.Sprite.prototype = new $e.Drawable();
 
-Enjine.Sprite.prototype.Draw = function(context, camera) {
+$e.Sprite.prototype.Draw = function(context, camera) {
 	context.drawImage(this.Image, this.X - camera.X, this.Y - camera.Y);
 }

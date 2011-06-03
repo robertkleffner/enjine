@@ -3,7 +3,7 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.Keys = {
+$e.Keys = {
     A: 65,
     B: 66,
     C: 67,
@@ -36,7 +36,7 @@ Enjine.Keys = {
     Down: 40
 };
 
-Enjine.KeyboardInput = {
+$e.KeyboardInput = {
     Pressed: new Array(),
     
     Initialize: function() {

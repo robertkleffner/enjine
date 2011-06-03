@@ -3,13 +3,13 @@
 	Code by Rob Kleffner, 2011
 */
 
-Enjine.Application = function() {
+$e.Application = function() {
     this.canvas = null;
     this.timer = null;
     this.stateContext = null;
 }
 
-Enjine.Application.prototype = {
+$e.Application.prototype = {
     Update: function(delta) {
         
         this.stateContext.Update(delta);
@@ -22,13 +22,13 @@ Enjine.Application.prototype = {
     },
     
     Initialize: function(defaultState, resWidth, resHeight) {
-        this.canvas = new Enjine.GameCanvas();
-        this.timer = new Enjine.GameTimer();
-        Enjine.KeyboardInput.Initialize();      
+        this.canvas = new $e.GameCanvas();
+        this.timer = new $e.GameTimer();
+        $e.KeyboardInput.Initialize();      
         this.canvas.Initialize("canvas", resWidth, resHeight);
         this.timer.UpdateObject = this;
         
-        this.stateContext = new Enjine.GameStateContext(defaultState);
+        this.stateContext = new $e.GameStateContext(defaultState);
         
         this.timer.Start();
     }
