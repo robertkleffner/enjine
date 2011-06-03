@@ -29,13 +29,25 @@ $e.SpriteFont.prototype.draw = function(context, camera) {
 	var i = 0;
 	var str = null;
 	var s = 0;
+	var x = 0;
+	var y = 0;
 	
     for (s = 0; s < this.strings.length; s++) {
         str = this.strings[s];
-		//TODO: handle line breaks by incrementing a local y variable and resetting x
+		x = str.x;
+		y = str.y;
+		
         for (i = 0; i < str.string.length; i++) {
             code = str.string.charCodeAt(i);
-            context.drawImage(this.image, this.letters[code].x, this.letters[code].y, this.letterWidth, this.letterHeight, str.x + this.letterWidth * (i + 1), str.y, this.letterWidth, this.letterHeight);
-        }
+			
+			if (code === 10) {
+				//handle line break
+				y += this.letterHeight;
+				x = str.x;
+			} else {
+				context.drawImage(this.image, this.letters[code].x, this.letters[code].y, this.letterWidth, this.letterHeight, x - camera.x, y - camera.y, this.letterWidth, this.letterHeight);
+				x += this.letterWidth;
+			}
+		}
     }
 };
