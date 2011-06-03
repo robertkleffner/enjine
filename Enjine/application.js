@@ -16,7 +16,7 @@ $e.Application.prototype = {
         
         this.canvas.BeginDraw();
         
-        this.stateContext.Draw(this.canvas.BackBufferContext2D);
+        this.stateContext.draw(this.canvas.BackBufferContext2D);
         
         this.canvas.EndDraw();
     },
@@ -24,7 +24,7 @@ $e.Application.prototype = {
     Initialize: function(defaultState, resWidth, resHeight) {
         this.canvas = new $e.GameCanvas();
         this.timer = new $e.GameTimer();
-        $e.KeyboardInput.Initialize();      
+        $e.Keyboard.Initialize();      
         this.canvas.Initialize("canvas", resWidth, resHeight);
         this.timer.UpdateObject = this;
         

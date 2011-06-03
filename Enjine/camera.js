@@ -4,6 +4,6 @@
 */
 
 $e.Camera = function() {
-	this.X = 0;
-	this.Y = 0;
+	this.x = 0;
+	this.y = 0;
 }

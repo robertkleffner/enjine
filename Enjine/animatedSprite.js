@@ -56,11 +56,11 @@ $e.AnimatedSprite.prototype.Update = function(delta) {
     this.FrameX += this.FrameWidth;
     
     //increment the frame
-    if (this.FrameX > (this.Image.width - this.FrameWidth)) {
+    if (this.FrameX > (this.image.width - this.FrameWidth)) {
         this.FrameX = 0;
         this.FrameY += this.FrameHeight;
         
-        if (this.FrameY > (this.Image.height - this.FrameHeight)) {
+        if (this.FrameY > (this.image.height - this.FrameHeight)) {
             this.FrameY = 0;
         }
     }
@@ -102,21 +102,21 @@ $e.AnimatedSprite.prototype.StopPlaying = function() {
 
 $e.AnimatedSprite.prototype.SetFrameWidth = function(width) {
     this.FrameWidth = width;
-    this.Rows = this.Image.width / this.FrameWidth;
+    this.Rows = this.image.width / this.FrameWidth;
 }
 
 $e.AnimatedSprite.prototype.SetFrameHeight = function(height) {
     this.FrameHeight = height;
-    this.Columns = this.Image.height / this.FrameHeight;
+    this.Columns = this.image.height / this.FrameHeight;
 }
 
 $e.AnimatedSprite.prototype.SetColumnCount = function(columnCount) {
-    this.FrameWidth = this.Image.width / columnCount;
+    this.FrameWidth = this.image.width / columnCount;
     this.Columns = columnCount;
 }
 
 $e.AnimatedSprite.prototype.SetRowCount = function(rowCount) {
-    this.FrameHeight = this.Image.height / rowCount;
+    this.FrameHeight = this.image.height / rowCount;
     this.Rows = rowCount;
 }
 

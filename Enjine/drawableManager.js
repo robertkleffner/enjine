@@ -69,18 +69,18 @@ $e.DrawableManager.prototype = {
 		}
 	},
 	
-	Draw: function(context, camera) {
+	draw: function(context, camera) {
 		
 		//sort the sprites based on their 'z depth' to get the correct drawing order
 		if (this.Unsorted) {
 			this.Unsorted = false;
-			this.Objects.sort(function(x1,x2) { return x1.ZOrder - x2.ZOrder; });
+			this.Objects.sort(function(x1,x2) { return x1.zOrder - x2.zOrder; });
 		}
 		
         var i = 0;
 		for (i = 0; i < this.Objects.length; i++) {
-			if (this.Objects[i].Draw) {
-				this.Objects[i].Draw(context, camera);
+			if (this.Objects[i].draw) {
+				this.Objects[i].draw(context, camera);
             }
 		}
 	}

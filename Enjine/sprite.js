@@ -4,13 +4,13 @@
 */
 
 $e.Sprite = function() {
-	this.X = 0;
-	this.Y = 0;
-	this.Image = null;
+	this.x = 0;
+	this.y = 0;
+	this.image = null;
 }
 
 $e.Sprite.prototype = new $e.Drawable();
 
-$e.Sprite.prototype.Draw = function(context, camera) {
-	context.drawImage(this.Image, this.X - camera.X, this.Y - camera.Y);
+$e.Sprite.prototype.draw = function(context, camera) {
+	context.drawImage(this.image, this.x - camera.x, this.y - camera.y);
 }

@@ -26,8 +26,8 @@ $e.GameStateContext.prototype = {
         this.State.Update(delta);
     },
     
-    Draw: function(delta) {
-        this.State.Draw(delta);
+    draw: function(delta) {
+        this.State.draw(delta);
     }
 }
 
@@ -40,6 +40,6 @@ $e.GameState.prototype = {
     Enter: function () {},
     Exit: function() {},
     Update: function(delta) {},
-    Draw: function(context) {},
+    draw: function(context) {},
     CheckForChange: function(context) {}
 }

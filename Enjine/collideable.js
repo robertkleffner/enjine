@@ -5,8 +5,8 @@
 
 $e.Collideable = function(obj, width, height, collisionEvent) {
     this.Base = obj;
-    this.X = obj.X;
-    this.Y = obj.Y;
+    this.x = obj.x;
+    this.y = obj.y;
     this.Width = width;
     this.Height = height;
     
@@ -19,15 +19,15 @@ $e.Collideable = function(obj, width, height, collisionEvent) {
 
 $e.Collideable.prototype = {
     Update: function() {
-        this.X = this.Base.X;
-        this.Y = this.Base.Y;
+        this.x = this.Base.x;
+        this.y = this.Base.y;
     },
     
     CheckCollision: function(other) {
-        var left1 = this.X, left2 = other.X;
-        var right1 = (this.X + this.Width), right2 = (other.X + other.Width);
-        var top1 = this.Y, top2 = other.Y;
-        var bottom1 = (this.Y + this.Height), bottom2 = other.Y + other.Height;
+        var left1 = this.x, left2 = other.x;
+        var right1 = (this.x + this.Width), right2 = (other.x + other.Width);
+        var top1 = this.y, top2 = other.y;
+        var bottom1 = (this.y + this.Height), bottom2 = other.y + other.Height;
         
         if (bottom1 < top2) {
             return;

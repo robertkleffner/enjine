@@ -4,9 +4,9 @@
 */
 
 $e.Drawable = function() {
-    this.ZOrder = 0;
+    this.zOrder = 0;
 }
 
 $e.Drawable.prototype = {
-    Draw: function(context) { }
+    draw: function(context) { }
 }

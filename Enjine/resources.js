@@ -16,7 +16,7 @@ $e.Resources = {
     //***********************/
     //Images
     AddImage: function(name, src) {
-        var tempImage = new Image();
+        var tempImage = new image();
 		this.Images[name] = tempImage;
         tempImage.src = src;
         return this;
@@ -24,7 +24,7 @@ $e.Resources = {
 	
 	AddImages: function(array) {
 		for (var i = 0; i < array.length; i++) {
-            var tempImage = new Image();
+            var tempImage = new image();
             this.Images[array[i].name] = tempImage;
             tempImage.src = array[i].src;
         }
