@@ -16,10 +16,12 @@ $e.SpriteFont.prototype = new $e.Drawable();
 $e.SpriteFont.prototype.addString = function(str, xPos, yPos) {
 	var strObj = { string: str, x: xPos, y: yPos };
 	this.strings.push(strObj);
+	return this;
 };
 
 $e.SpriteFont.prototype.removeString = function(index) {
 	this.strings.splice(index, 1);
+	return this;
 };
 
 $e.SpriteFont.prototype.draw = function(context, camera) {

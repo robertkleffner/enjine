@@ -89,47 +89,58 @@ $e.AnimatedSprite.prototype.playSequence = function(seqName, loop) {
     this.currentSequence = this.sequences["seq_" + seqName];
     this.frameX = this.currentSequence.startColumn * this.frameWidth;
     this.frameY = this.currentSequence.startRow * this.frameHeight;
+	return this;
 };
 
 $e.AnimatedSprite.prototype.stopLooping = function() {
     this.looping = false;
+	return this;
 };
 
 $e.AnimatedSprite.prototype.stopPlaying = function() {
     this.playing = false;
+	return this;
 };
 
 $e.AnimatedSprite.prototype.setFrameWidth = function(width) {
     this.frameWidth = width;
+	return this;
 };
 
 $e.AnimatedSprite.prototype.setFrameHeight = function(height) {
     this.frameHeight = height;
+	return this;
 };
 
 $e.AnimatedSprite.prototype.setColumnCount = function(columnCount) {
     this.frameWidth = this.image.width / columnCount;
+	return this;
 };
 
 $e.AnimatedSprite.prototype.setRowCount = function(rowCount) {
     this.frameHeight = this.image.height / rowCount;
+	return this;
 };
 
-$e.AnimatedSprite.prototype.addExistingSequence = function(name, sequence) {
+$e.AnimatedSprite.prototype.addSequence = function(name, sequence) {
     this.sequences["seq_" + name] = sequence;
+	return this;
 };
 
 $e.AnimatedSprite.prototype.addNewSequence = function(name, startRow, startColumn, endRow, endColumn) {
     this.sequences["seq_" + name] = new $e.AnimationSequence(startRow, startColumn, endRow, endColumn);
+	return this;
 };
 
 $e.AnimatedSprite.prototype.deleteSequence = function(name) {
     if (this.sequences["seq_" + name]  !== null) {
         delete this.sequences["seq_" + name];
     }
+	return this;
 };
 
 $e.AnimatedSprite.prototype.clearSequences = function() {
     delete this.sequences;
     this.sequences = {};
+	return this;
 };

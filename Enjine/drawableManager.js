@@ -12,15 +12,18 @@ $e.DrawableManager.prototype = {
     add: function(object) {
 		this.objects.push(object);
 		this.unsorted = true;
+		return this;
 	},
 	
 	addRange: function(objects) {
 		this.objects = this.objects.concat(objects);
 		this.unsorted = true;
+		return this;
 	},
 	
 	clear: function() {
 		this.objects.splice(0, this.objects.length);
+		return this;
 	},
     
     contains: function(obj) {
@@ -36,14 +39,17 @@ $e.DrawableManager.prototype = {
 	remove: function(object) {
 		var index = this.objects.indexOf(object);
 		this.objects.splice(index, 1);
+		return this;
 	},
 	
 	removeAt: function(index) {
 		this.objects.splice(index, 1);
+		return this;
 	},
 	
 	removeRange: function(index, len) {
 		this.objects.splice(index, len);
+		return this;
 	},
     
     removeList: function(items) {
@@ -60,6 +66,8 @@ $e.DrawableManager.prototype = {
                 }
             }
         }
+		
+		return this;
     },
 	
 	update: function(delta) {
