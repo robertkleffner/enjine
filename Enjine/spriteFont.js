@@ -8,6 +8,8 @@ $e.SpriteFont = function(image, letterWidth, letterHeight, letters) {
     this.letters = letters;
     this.letterWidth = letterWidth;
     this.letterHeight = letterHeight;
+	this.letterSpacing = 0;
+	this.lineHeight = 0;
     this.strings = [];
 };
 
@@ -42,11 +44,11 @@ $e.SpriteFont.prototype.draw = function(context, camera) {
 			
 			if (code === 10) {
 				//handle line break
-				y += this.letterHeight;
+				y += this.letterHeight + this.lineSpacing;
 				x = str.x;
 			} else {
 				context.drawImage(this.image, this.letters[code].x, this.letters[code].y, this.letterWidth, this.letterHeight, x - camera.x, y - camera.y, this.letterWidth, this.letterHeight);
-				x += this.letterWidth;
+				x += this.letterWidth + this.letterSpacing;
 			}
 		}
     }
