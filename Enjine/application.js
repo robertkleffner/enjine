@@ -16,7 +16,7 @@ $e.Application.prototype = {
         
         this.canvas.beginDraw();
         
-        this.stateContext.draw(this.canvas.backBufferContext2D);
+        this.stateContext.draw(this.canvas.betterBuffer);
         
         this.canvas.endDraw();
     },

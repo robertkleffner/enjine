@@ -8,6 +8,7 @@ $e.GameCanvas = function() {
 	this.context2D = null;
     this.backBuffer = null;
 	this.backBufferContext2D = null;
+	this.betterBuffer = null;
 };
 
 $e.GameCanvas.prototype = {
@@ -18,6 +19,9 @@ $e.GameCanvas.prototype = {
 		this.backBuffer.width = resWidth;
 		this.backBuffer.height = resHeight;
 		this.backBufferContext2D = this.backBuffer.getContext("2d");
+		this.betterBuffer = this.backBufferContext2D;
+		this.betterBuffer.width = this.backBuffer.width;
+		this.betterBuffer.height = this.backBuffer.height;
 	},
 	
     beginDraw: function() {
