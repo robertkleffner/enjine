@@ -52,10 +52,10 @@ $e.Resources = {
         this.sounds[name] = [];
         this.sounds[name].index = 0;
         if (!maxChannels) {
-        	maxChannels = 3;
+			maxChannels = 3;
         }
         for (i = 0; i < maxChannels; i++) {
-        	this.sounds[name][i] = new Audio(src);	
+			this.sounds[name][i] = new Audio(src);
         }
         return this;
     },
@@ -73,10 +73,10 @@ $e.Resources = {
     
     playSound: function(name, loop) {
     	if (this.sounds[name].index >= this.sounds[name].length) {
-    		this.sounds[name].index = 0;	
-    	}
+			this.sounds[name].index = 0;
+		}
     	if (loop) {
-    		this.sounds[name][this.sounds[name].index].addEventListener("ended", this.loopCallback, false);
+			this.sounds[name][this.sounds[name].index].addEventListener("ended", this.loopCallback, false);
     	}
     	this.sounds[name][this.sounds[name].index++].play();
     	return this.sounds[name].index;

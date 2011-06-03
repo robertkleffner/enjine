@@ -8,7 +8,7 @@ $e.GameCanvas = function() {
 	this.context2D = null;
     this.backBuffer = null;
 	this.backBufferContext2D = null;
-}
+};
 
 $e.GameCanvas.prototype = {
     initialize: function(canvasId, resWidth, resHeight) {
@@ -28,4 +28,4 @@ $e.GameCanvas.prototype = {
     endDraw: function() {
         this.context2D.drawImage(this.backBuffer, 0, 0, this.backBuffer.width, this.backBuffer.height, 0, 0, this.canvas.width, this.canvas.height);
     }
-}
+};

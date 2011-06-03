@@ -37,17 +37,18 @@ $e.Keys = {
 };
 
 $e.Keyboard = {
-    pressed: new Array(),
+    pressed: [],
     
     initialize: function() {
         var self = this;
-        document.onkeydown = function(event) { self.keyDownEvent(event); }
-        document.onkeyup = function(event) { self.keyUpEvent(event); }
+        document.onkeydown = function(event) { self.keyDownEvent(event); };
+        document.onkeyup = function(event) { self.keyUpEvent(event); };
     },
     
     isKeyDown: function(key) {
-        if (this.pressed[key] != null)
+        if (this.pressed[key] !== null) {
             return this.pressed[key];
+		}
         return false;
     },
     

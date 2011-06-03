@@ -8,21 +8,21 @@ $e.GameTimer = function() {
 	this.lastTime = 0;
     this.intervalFunc = null;
     this.updateObject = null;
-}
+};
 
 $e.GameTimer.prototype = {
     start: function() {
         var self = this;
         this.lastTime = new Date().getTime();
-        this.intervalFunc = setInterval(function() { self.tick() }, this.framesPerSecond);
+        this.intervalFunc = setInterval(function() { self.tick(); }, this.framesPerSecond);
     },
     
     tick: function() {
         var newTime = new Date().getTime();
-    	var delta = (newTime - this.lastTime) / 1000;
+		var delta = (newTime - this.lastTime) / 1000;
 		
-        if (this.updateObject != null) {
-    		this.lastTime = newTime;    
+        if (this.updateObject !== null) {
+			this.lastTime = newTime;
             this.updateObject.update(delta);
         }
     },
@@ -30,4 +30,4 @@ $e.GameTimer.prototype = {
     stop: function() {
         clearInterval(this.intervalFunc);
     }
-}
+};

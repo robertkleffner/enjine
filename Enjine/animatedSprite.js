@@ -124,7 +124,7 @@ $e.AnimatedSprite.prototype.addNewSequence = function(name, startRow, startColum
 };
 
 $e.AnimatedSprite.prototype.deleteSequence = function(name) {
-    if (this.sequences["seq_" + name]  != null) {
+    if (this.sequences["seq_" + name]  !== null) {
         delete this.sequences["seq_" + name];
     }
 };

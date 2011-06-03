@@ -10,10 +10,10 @@ $e.Collideable = function(obj, width, height, collisionEvent) {
     this.width = width;
     this.height = height;
     
-    if (collisionEvent != null) {
+    if (collisionEvent !== null) {
         this.collisionEvent = collisionEvent;
     } else {
-        this.collisionEvent = function() {}
+        this.collisionEvent = function() {};
     }
 };
 

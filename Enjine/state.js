@@ -6,7 +6,7 @@
 $e.GameStateContext = function(defaultState) {
     this.state = null;
     
-    if (defaultState != null) {
+    if (defaultState !== null) {
         this.state = defaultState;
         this.state.enter();
     }
@@ -14,7 +14,7 @@ $e.GameStateContext = function(defaultState) {
 
 $e.GameStateContext.prototype = {
     changeState: function(newState) {
-        if (this.state != null) {
+        if (this.state !== null) {
             this.state.exit();
         }
         this.state = newState;
@@ -34,7 +34,7 @@ $e.GameStateContext.prototype = {
 /**
  * Base game state class to at least ensure that all the functions exist.
  */ 
-$e.GameState = function() { }
+$e.GameState = function() { };
 
 $e.GameState.prototype = {
     enter: function () {},

@@ -6,7 +6,7 @@
 $e.DrawableManager = function() {
 	this.unsorted = true;
 	this.objects = [];
-}
+};
 
 $e.DrawableManager.prototype = {
     add: function(object) {
