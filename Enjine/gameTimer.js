@@ -12,17 +12,17 @@ $e.GameTimer = function() {
 
 $e.GameTimer.prototype = {
     start: function() {
-        this.lastTime = new Date().getTime();
         var self = this;
+        this.lastTime = new Date().getTime();
         this.intervalFunc = setInterval(function() { self.tick() }, this.framesPerSecond);
     },
     
     tick: function() {
+        var newTime = new Date().getTime();
+    	var delta = (newTime - this.lastTime) / 1000;
+		
         if (this.updateObject != null) {
-            var newTime = new Date().getTime();
-    		var delta = (newTime - this.lastTime) / 1000;
-    		this.lastTime = newTime;
-            
+    		this.lastTime = newTime;    
             this.updateObject.update(delta);
         }
     },

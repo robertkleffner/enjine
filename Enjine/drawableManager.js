@@ -47,7 +47,9 @@ $e.DrawableManager.prototype = {
 	},
     
     removeList: function(items) {
-        var i = 0, j = 0;
+        var i = 0;
+		var j = 0;
+		
         for (j = 0; j < items.length; i++) {
             for (i = 0; i < this.objects.length; i++) {
                 if (this.objects[i] === items[j]) {
@@ -70,6 +72,7 @@ $e.DrawableManager.prototype = {
 	},
 	
 	draw: function(context, camera) {
+        var i = 0;
 		
 		//sort the sprites based on their 'z depth' to get the correct drawing order
 		if (this.unsorted) {
@@ -77,7 +80,6 @@ $e.DrawableManager.prototype = {
 			this.objects.sort(function(x1,x2) { return x1.zOrder - x2.zOrder; });
 		}
 		
-        var i = 0;
 		for (i = 0; i < this.objects.length; i++) {
 			if (this.objects[i].draw) {
 				this.objects[i].draw(context, camera);

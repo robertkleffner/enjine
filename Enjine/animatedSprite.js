@@ -37,6 +37,8 @@ $e.AnimatedSprite = function() {
 $e.AnimatedSprite.prototype = new $e.FrameSprite();
 
 $e.AnimatedSprite.prototype.update = function(delta) {
+    var seqEnd = false;
+
     if (this.currentSequence.singleFrame) {
         return;
     }
@@ -64,7 +66,6 @@ $e.AnimatedSprite.prototype.update = function(delta) {
     }
     
     //check if it's at the end of the animation sequence
-    var seqEnd = false;
     if ((this.frameX > (this.currentSequence.endColumn * this.frameWidth)) && (this.frameY === (this.currentSequence.endRow * this.frameHeight))) {
         seqEnd = true;
     } else if (this.frameX === 0 && (this.frameY > (this.currentSequence.endRow * this.frameHeight))) {

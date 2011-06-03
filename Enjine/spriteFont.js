@@ -23,7 +23,11 @@ $e.SpriteFont.prototype.removeString = function(index) {
 };
 
 $e.SpriteFont.prototype.draw = function(context, camera) {
-	var string = null, s = 0, i = 0, code = 0;
+	var code = 0;
+	var i = 0;
+	var str = null;
+	var s = 0;
+	
     for (s = 0; s < this.strings.length; s++) {
         str = this.strings[s];
 		//TODO: handle line breaks by incrementing a local y variable and resetting x

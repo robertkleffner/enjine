@@ -4,7 +4,7 @@
 */
 
 $e.Collideable = function(obj, width, height, collisionEvent) {
-    this.Base = obj;
+    this.base = obj;
     this.x = obj.x;
     this.y = obj.y;
     this.width = width;
@@ -19,24 +19,21 @@ $e.Collideable = function(obj, width, height, collisionEvent) {
 
 $e.Collideable.prototype = {
     update: function() {
-        this.x = this.Base.x;
-        this.y = this.Base.y;
+        this.x = this.base.x;
+        this.y = this.base.y;
     },
     
     checkCollision: function(other) {
-        var left1 = this.x, left2 = other.x, right1 = (this.x + this.width), right2 = (other.x + other.width),
-			top1 = this.y, top2 = other.y, bottom1 = (this.y + this.height), bottom2 = other.y + other.height;
-        
-        if (bottom1 < top2) {
+        if (this.y + this.height < other.y) {
             return;
         }
-        if (top1 > bottom2) {
+        if (this.y > other.y + other.height) {
             return;
         }
-        if (right1 < left2) {
+        if (this.x + this.width < other.x) {
             return;
         }
-        if (left1 > right2) {
+        if (this.x > other.x + other.width) {
             return;
         }
         

@@ -24,8 +24,10 @@ $e.Resources = {
 	
 	addImages: function(array) {
 		var i = 0;
+		var tempImage = null;
+		
 		for (i = 0; i < array.length; i++) {
-            var tempImage = new Image();
+            tempImage = new Image();
             this.images[array[i].name] = tempImage;
             tempImage.src = array[i].src;
         }
