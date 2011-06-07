@@ -6,7 +6,7 @@
 $e.Buttons = {
     MouseLeft: 0,
 	MouseRight: 2,
-	MouseWheel: 1,
+	MouseWheel: 1
 };
 
 $e.Mouse = {
