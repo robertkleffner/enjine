@@ -25,7 +25,7 @@ $e.Application.prototype = {
         this.canvas = new $e.GameCanvas();
         this.timer = new $e.GameTimer();
         $e.Keyboard.initialize();
-		$e.Mouse.initialize();
+		$e.Mouse.initialize(document.getElementById("canvas"));
         this.canvas.initialize("canvas", resWidth, resHeight);
         this.timer.updateObject = this;
         
