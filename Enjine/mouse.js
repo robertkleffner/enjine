@@ -13,9 +13,11 @@ $e.Mouse = {
 	x: 0,
 	y: 0,
     pressed: [],
+	element: null,
     
     initialize: function(element) {
         var self = this;
+		this.element = element;
         element.onmousedown = function(event) { self.mouseDownEvent(event); };
         element.onmouseup = function(event) { self.mouseUpEvent(event); };
 		element.onmousemove = function(event) { self.mouseMoveEvent(event); };
@@ -37,7 +39,15 @@ $e.Mouse = {
     },
 	
 	mouseMoveEvent: function(event) {
-		this.x = event.clientX;
-		this.y = event.clientY;
+		this.x = event.pageX;
+		this.y = event.pageY;
+		
+		var obj = this.element;
+		if (obj.offsetParent) {
+			do {
+				this.x -= obj.offsetLeft;
+				this.y -= obj.offsetTop;
+			} while (obj = obj.offsetParent);
+		}
 	}
 };

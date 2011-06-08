@@ -21,12 +21,12 @@ $e.Application.prototype = {
         this.canvas.endDraw();
     },
     
-    initialize: function(defaultState, resWidth, resHeight) {
+    initialize: function(canvasId, defaultState, resWidth, resHeight) {
         this.canvas = new $e.GameCanvas();
         this.timer = new $e.GameTimer();
         $e.Keyboard.initialize();
-		$e.Mouse.initialize(document.getElementById("canvas"));
-        this.canvas.initialize("canvas", resWidth, resHeight);
+		$e.Mouse.initialize(document.getElementById(canvasId));
+        this.canvas.initialize(canvasId, resWidth, resHeight);
         this.timer.updateObject = this;
         
         this.stateContext = new $e.GameStateContext(defaultState);
