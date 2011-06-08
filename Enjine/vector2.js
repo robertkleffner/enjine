@@ -9,6 +9,10 @@ $e.Vector2 = function(x, y) {
 };
 
 $e.Vector2.prototype = {
+	equals: function(vec) {
+		return (this.x === vec.x && this.y === vec.y);
+	},
+
 	dot: function(vec) {
 		return this.x * vec.x + this.y * vec.y;
 	},
@@ -51,6 +55,8 @@ $e.Vector2.prototype = {
 };
 
 //Static variables and functions
+$e.Vector2.zero = new $e.Vector2(0, 0);
+$e.Vector2.one = new $e.Vector2(1, 1);
 $e.Vector2.unitX = new $e.Vector2(1, 0);
 $e.Vector2.unitY = new $e.Vector2(0, 1);
 
