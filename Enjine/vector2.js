@@ -26,31 +26,37 @@ $e.Vector2.prototype = {
 		var len = Math.sqrt(this.x * this.x + this.y * this.y);
 		this.x /= len;
 		this.y /= len;
+		return this;
 	},
 	
 	add: function(vec) {
 		this.x += vec.x;
 		this.y += vec.y;
+		return this;
 	},
 	
 	sub: function(vec) {
 		this.x -= vec.x;
 		this.y -= vec.y;
+		return this;
 	},
 	
 	scale: function(scalar) {
 		this.x *= scalar;
 		this.y *= scalar;
+		return this;
 	},
 	
 	mul: function(vec) {
 		this.x *= vec.x;
 		this.y *= vec.y;
+		return this;
 	},
 	
 	div: function(vec) {
 		this.x /= vec.x;
 		this.y /= vec.y;
+		return this;
 	}
 };
 
