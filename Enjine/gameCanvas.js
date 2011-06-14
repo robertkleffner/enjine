@@ -9,6 +9,7 @@ $e.GameCanvas = function() {
     this.backBuffer = null;
 	this.backBufferContext2D = null;
 	this.betterBuffer = null;
+	this.autoResolutionMode = false;
 	return this;
 };
 
@@ -33,5 +34,39 @@ $e.GameCanvas.prototype = {
     
     endDraw: function() {
         this.context2D.drawImage(this.backBuffer, 0, 0, this.backBuffer.width, this.backBuffer.height, 0, 0, this.canvas.width, this.canvas.height);
-    }
+    },
+	
+	fullScreen: function(autoRes) {
+		this.autoResolutionMode = autoRes;
+		this.changeCanvasSize(window.innerWidth, window.innerHeight);
+		var self = this;
+		window.onresize = function() {
+			document.body.style.margin = "0";
+			document.body.style.padding = "0";
+			self.canvas.width = window.innerWidth;
+			self.canvas.height = window.innerHeight;
+			if (self.autoResolutionMode) {
+				self.backBuffer.width = self.canvas.width;
+				self.backBuffer.height = self.canvas.height;
+				self.betterBuffer.width = self.backBuffer.width;
+				self.betterBuffer.height = self.backBuffer.height;
+			}
+		};
+	},
+	
+	changeCanvasResolution: function(resWidth, resHeight) {
+		this.autoResolutionMode = false;
+		this.backBuffer.width = resWidth;
+		this.backBuffer.height = resHeight;
+	},
+	
+	changeCanvasSize: function(width, height) {
+		this.canvas.width = width;
+		this.canvas.height = height;
+		window.onresize = null;
+		if (this.autoResolutionMode) {
+			this.backBuffer.width = this.canvas.width;
+			this.backBuffer.height = this.canvas.height;
+		}
+	}
 };
