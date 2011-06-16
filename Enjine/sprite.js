@@ -19,8 +19,8 @@ $e.Sprite.prototype = new $e.Drawable();
 $e.Sprite.prototype.draw = function(context, camera) {
 	context.save();
 	context.translate(this.x - camera.x, this.y - camera.y);
-	context.scale(this.xScale, this.yScale);
 	context.rotate(this.angle);
+	context.scale(this.xScale, this.yScale);
 	context.drawImage(this.image, -this.image.width * this.xPivot, -this.image.height * this.yPivot);
 	context.restore();
 };

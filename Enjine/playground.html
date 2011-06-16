@@ -8,27 +8,39 @@
 		</canvas>
 		<img id="image" src="endscene.gif" style="display: none;">
 		<script src="core.js"></script>
+		<script src="camera.js"></script>
 		<script src="drawable.js"></script>
 		<script src="sprite.js"></script>
+		<script src="frameSprite.js"></script>
+		<script src="animatedSprite.js"></script>
 		<script>
 		
 		function init() {
 			var canvas = document.getElementById("main");
 			var context = canvas.getContext("2d");
 			
-			var sprite = new $e.Sprite();
+			var camera = new $e.Camera();
+			
+			var sprite = new $e.AnimatedSprite();
 			sprite.image = document.getElementById("image");
-			sprite.x = 0;
-			sprite.y = 0;
-			sprite.angle = Math.PI * 3 / 2;
-			sprite.xScale = 2;
+			sprite.x = 96;
+			sprite.y = 96;
+			sprite.setColumnCount(2);
+			sprite.setRowCount(1);
+			sprite.addNewSequence("loop", 0, 0, 0, 1);
+			sprite.playSequence("loop", true);
+			sprite.framesPerSecond = 1 / 2;
+			sprite.angle = Math.PI * 4 / 3;
+			sprite.xScale = 1.5;
 			sprite.yScale = 2;
+			sprite.frameWidth = 96;
+			sprite.frameHeight = 96;
 			
 			context.fillStyle = "#ff0000";
 			context.fillRect(0, 0, 800, 600);
 			
 			
-			setInterval(function() { sprite.draw(context) }, 25);
+			setInterval(function() { sprite.draw(context, camera), sprite.update(0.01); sprite.angle += 0.1; }, 25);
 		}
 		
 		</script>

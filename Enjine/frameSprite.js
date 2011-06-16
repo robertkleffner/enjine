@@ -13,5 +13,10 @@ $e.FrameSprite = function() {
 $e.FrameSprite.prototype = new $e.Sprite();
 
 $e.FrameSprite.prototype.draw = function(context, camera) {
-    context.drawImage(this.image, this.frameX, this.frameY, this.frameWidth, this.frameHeight, this.x - camera.x, this.y - camera.y, this.frameWidth, this.frameHeight);
+	context.save();
+	context.translate(this.x - camera.x, this.y - camera.y);
+	context.rotate(this.angle);
+	context.scale(this.xScale, this.yScale);
+    context.drawImage(this.image, this.frameX, this.frameY, this.frameWidth, this.frameHeight, -this.frameWidth * this.xPivot, -this.frameHeight * this.yPivot, this.frameWidth, this.frameHeight);
+	context.restore();
 };
