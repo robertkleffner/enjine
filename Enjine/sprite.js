@@ -17,7 +17,6 @@ $e.Sprite = function() {
 $e.Sprite.prototype = new $e.Drawable();
 
 $e.Sprite.prototype.draw = function(context, camera) {
-	this.angle += 0.1;
 	context.save();
 	context.translate(this.x, this.y);
 	context.scale(this.xScale, this.yScale);
