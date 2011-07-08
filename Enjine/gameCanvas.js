@@ -58,6 +58,8 @@ $e.GameCanvas.prototype = {
 		this.autoResolutionMode = false;
 		this.backBuffer.width = resWidth;
 		this.backBuffer.height = resHeight;
+		this.betterBuffer.width = this.backBuffer.width;
+		this.betterBuffer.height = this.backBuffer.height;
 	},
 	
 	changeCanvasSize: function(width, height) {
@@ -67,6 +69,8 @@ $e.GameCanvas.prototype = {
 		if (this.autoResolutionMode) {
 			this.backBuffer.width = this.canvas.width;
 			this.backBuffer.height = this.canvas.height;
+			this.betterBuffer.width = this.backBuffer.width;
+			this.betterBuffer.height = this.backBuffer.height;
 		}
 	}
 };
