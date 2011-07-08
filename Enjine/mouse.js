@@ -14,13 +14,16 @@ $e.Mouse = {
 	y: 0,
     pressed: [],
 	element: null,
+	containsMouse: false,
     
     initialize: function(element) {
         var self = this;
 		this.element = element;
-        element.onmousedown = function(event) { self.mouseDownEvent(event); };
-        element.onmouseup = function(event) { self.mouseUpEvent(event); };
+        element.onmousedown = function(event) { self.pressed[event.button] = true; };
+        element.onmouseup = function(event) { self.pressed[event.button] = false };
 		element.onmousemove = function(event) { self.mouseMoveEvent(event); };
+		element.onmouseover = function(event) { self.containsMouse = true; };
+		element.onmouseout = function(event) { self.containsMouse = false; this.x = -1; this.y = -1; };
     },
     
     isButtonDown: function(key) {
@@ -28,14 +31,6 @@ $e.Mouse = {
             return this.pressed[key];
 		}
         return false;
-    },
-    
-    mouseDownEvent: function(event) {
-        this.pressed[event.button] = true;
-    },
-    
-    mouseUpEvent: function(event) {
-        this.pressed[event.button] = false;
     },
 	
 	mouseMoveEvent: function(event) {
