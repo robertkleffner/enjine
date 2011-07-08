@@ -18,8 +18,8 @@ $e.GameTimer.prototype = {
     },
     
     tick: function() {
-        var newTime = new Date().getTime();
-		var delta = (newTime - this.lastTime) / 1000;
+        var newTime = new Date().getTime(),
+			delta = (newTime - this.lastTime) / 1000;
 		
         if (this.updateObject !== null) {
 			this.lastTime = newTime;

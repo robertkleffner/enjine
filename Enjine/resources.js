@@ -23,8 +23,8 @@ $e.Resources = {
 	},
 	
 	addImages: function(array) {
-		var i = 0;
-		var tempImage = null;
+		var i = 0,
+			tempImage = null;
 		
 		for (i = 0; i < array.length; i++) {
             tempImage = new Image();
@@ -72,54 +72,54 @@ $e.Resources = {
     },
     
     playSound: function(name, loop) {
-    	if (this.sounds[name].index >= this.sounds[name].length) {
+		if (this.sounds[name].index >= this.sounds[name].length) {
 			this.sounds[name].index = 0;
 		}
-    	if (loop) {
+		if (loop) {
 			this.sounds[name][this.sounds[name].index].addEventListener("ended", this.loopCallback, false);
-    	}
-    	this.sounds[name][this.sounds[name].index++].play();
-    	return this.sounds[name].index;
+		}
+		this.sounds[name][this.sounds[name].index++].play();
+		return this.sounds[name].index;
     },
     
     pauseChannel: function(name, index) {
-    	if (!this.sounds[name][index].paused) {
-    		this.sounds[name][index].pause();
-    	}
-    	return this;
+		if (!this.sounds[name][index].paused) {
+			this.sounds[name][index].pause();
+		}
+		return this;
     },
     
     pauseSound: function(name) {
 		var i = 0;
-    	for (i = 0; i < this.sounds[name].length; i++) {
-    		if (!this.sounds[name][i].paused) {
-    			this.sounds[name][i].pause();
-    		}
-    	}
-    	return this;
+		for (i = 0; i < this.sounds[name].length; i++) {
+			if (!this.sounds[name][i].paused) {
+				this.sounds[name][i].pause();
+			}
+		}
+		return this;
     },
     
     resetChannel: function(name, index) {
-    	this.sounds[name][index].currentTime = 0;
-    	this.stopLoop(name, index);
-    	return this;
+		this.sounds[name][index].currentTime = 0;
+		this.stopLoop(name, index);
+		return this;
     },
     
     resetSound: function(name) {
 		var i = 0;
-    	for (i = 0; i < this.sounds[name].length; i++) {
-    		this.sounds[name].currentTime = 0;
-    		this.stopLoop(name, i);
-    	}
-    	return this;
+		for (i = 0; i < this.sounds[name].length; i++) {
+			this.sounds[name].currentTime = 0;
+			this.stopLoop(name, i);
+		}
+		return this;
     },
     
     stopLoop: function(name, index) {
-    	this.sounds[name][index].removeEventListener("ended", this.loopCallback, false);	
+		this.sounds[name][index].removeEventListener("ended", this.loopCallback, false);	
     },
     
     loopCallback: function() {
-    	this.currentTime = -1;
-    	this.play();
+		this.currentTime = -1;
+		this.play();
     }
 };

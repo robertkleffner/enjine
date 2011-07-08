@@ -53,8 +53,8 @@ $e.DrawableManager.prototype = {
 	},
     
     removeList: function(items) {
-        var i = 0;
-		var j = 0;
+        var i = 0,
+			j = 0;
 		
         for (j = 0; j < items.length; i++) {
             for (i = 0; i < this.objects.length; i++) {

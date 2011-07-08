@@ -27,12 +27,12 @@ $e.SpriteFont.prototype.removeString = function(index) {
 };
 
 $e.SpriteFont.prototype.draw = function(context, camera) {
-	var code = 0;
-	var i = 0;
-	var str = null;
-	var s = 0;
-	var x = 0;
-	var y = 0;
+	var code = 0,
+		i = 0,
+		str = null,
+		s = 0,
+		x = 0,
+		y = 0;
 	
     for (s = 0; s < this.strings.length; s++) {
         str = this.strings[s];
