@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CD1517FB-C043-4553-A807-E6CFDA056425}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Enjine</RootNamespace>
+    <AssemblyName>Enjine</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="src\animatedSprite.simple.coffee" />
+    <None Include="src\application.simple.coffee" />
+    <None Include="src\camera.simple.coffee" />
+    <None Include="src\core.simple.coffee" />
+    <None Include="src\drawable.simple.coffee" />
+    <None Include="src\drawableManager.simple.coffee" />
+    <None Include="src\frameSprite.simple.coffee" />
+    <None Include="src\gameCanvas.simple.coffee" />
+    <None Include="src\gameTimer.simple.coffee" />
+    <None Include="src\keyboard.simple.coffee" />
+    <None Include="src\mouse.simple.coffee" />
+    <None Include="src\resources.simple.coffee" />
+    <None Include="src\sprite.simple.coffee" />
+    <None Include="src\spriteFont.simple.coffee" />
+    <None Include="src\vector2.simple.coffee" />
+    <None Include="standards.chirp.coffee" />
+    <None Include="mash.chirp.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="enjine.min.js">
+      <DependentUpon>mash.chirp.config</DependentUpon>
+    </Content>
+    <Content Include="src\animatedSprite.js">
+      <DependentUpon>animatedSprite.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\animatedSprite.min.js">
+      <DependentUpon>animatedSprite.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\application.js">
+      <DependentUpon>application.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\application.min.js">
+      <DependentUpon>application.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\camera.js">
+      <DependentUpon>camera.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\camera.min.js">
+      <DependentUpon>camera.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\core.js">
+      <DependentUpon>core.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\core.min.js">
+      <DependentUpon>core.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\drawable.js">
+      <DependentUpon>drawable.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\drawable.min.js">
+      <DependentUpon>drawable.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\drawableManager.js">
+      <DependentUpon>drawableManager.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\drawableManager.min.js">
+      <DependentUpon>drawableManager.simple.coffee</DependentUpon>
+    </Content>
+    <None Include="src\state.simple.coffee" />
+    <Content Include="src\frameSprite.js">
+      <DependentUpon>frameSprite.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\frameSprite.min.js">
+      <DependentUpon>frameSprite.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\gameCanvas.js">
+      <DependentUpon>gameCanvas.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\gameCanvas.min.js">
+      <DependentUpon>gameCanvas.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\gameTimer.js">
+      <DependentUpon>gameTimer.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\gameTimer.min.js">
+      <DependentUpon>gameTimer.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\keyboard.js">
+      <DependentUpon>keyboard.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\keyboard.min.js">
+      <DependentUpon>keyboard.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\mouse.js">
+      <DependentUpon>mouse.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\mouse.min.js">
+      <DependentUpon>mouse.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\resources.js">
+      <DependentUpon>resources.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\resources.min.js">
+      <DependentUpon>resources.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\sprite.js">
+      <DependentUpon>sprite.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\sprite.min.js">
+      <DependentUpon>sprite.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\spriteFont.js">
+      <DependentUpon>spriteFont.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\spriteFont.min.js">
+      <DependentUpon>spriteFont.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\state.js">
+      <DependentUpon>state.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\state.min.js">
+      <DependentUpon>state.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\vector2.js">
+      <DependentUpon>vector2.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="src\vector2.min.js">
+      <DependentUpon>vector2.simple.coffee</DependentUpon>
+    </Content>
+    <Content Include="standards.js">
+      <DependentUpon>standards.chirp.coffee</DependentUpon>
+    </Content>
+    <Content Include="standards.min.js">
+      <DependentUpon>standards.chirp.coffee</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

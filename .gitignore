@@ -1,0 +1,13 @@
+*.vs10x
+*.map
+*.lock
+*.vsmdi
+*.ncb
+*.aps
+*.suo
+bin/*
+obj/*
+*ReSharper*
+*.user
+*.orig
+*.cache
