@@ -5,8 +5,7 @@
   */
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   this.module("Enjine", function() {
-    var GameTimer;
-    return GameTimer = (function() {
+    return this.GameTimer = (function() {
       function GameTimer() {}
       GameTimer.prototype.framesPerSecond = 1000 / 30;
       GameTimer.prototype.lastTime = 0;

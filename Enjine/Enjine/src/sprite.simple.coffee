@@ -4,7 +4,7 @@
 ###
 
 @module("Enjine", ->
-	class Sprite extends Drawable
+	class @Sprite extends @Drawable
 		xPivot: 0.5
 		yPivot: 0.5
 		angle: 0

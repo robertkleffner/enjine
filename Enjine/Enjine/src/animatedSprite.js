@@ -12,8 +12,7 @@
     return child;
   };
   this.module("Enjine", function() {
-    var AnimationSequence;
-    return AnimationSequence = (function() {
+    return this.AnimationSequence = (function() {
       function AnimationSequence(startRow, startColumn, endRow, endColumn) {
         this.startRow = startRow;
         this.startColumn = startColumn;
@@ -28,9 +27,8 @@
     })();
   });
   this.module("Enjine", function() {
-    var AnimatedSprite;
-    return AnimatedSprite = (function() {
-      __extends(AnimatedSprite, FrameSprite);
+    return this.AnimatedSprite = (function() {
+      __extends(AnimatedSprite, this.FrameSprite);
       function AnimatedSprite() {
         AnimatedSprite.__super__.constructor.apply(this, arguments);
       }
@@ -125,6 +123,6 @@
         return this;
       };
       return AnimatedSprite;
-    })();
+    }).call(this);
   });
 }).call(this);

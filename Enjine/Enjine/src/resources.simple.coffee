@@ -4,7 +4,7 @@
 #
 
 @module("Enjine", ->
-	Resources =
+	@Resources =
 		images: {}
 		sounds: {}
 

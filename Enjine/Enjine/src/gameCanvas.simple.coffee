@@ -4,7 +4,7 @@
 ###
 
 @module("Enjine", ->
-	class GameCanvas
+	class @GameCanvas
 		canvas: null
 		context2D: null
 		backBuffer: null

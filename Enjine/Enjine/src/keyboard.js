@@ -5,8 +5,7 @@
   */
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   this.module("Enjine", function() {
-    var Keys;
-    return Keys = {
+    return this.Keys = {
       a: 65,
       b: 66,
       c: 67,
@@ -40,8 +39,7 @@
     };
   });
   this.module("Enjine", function() {
-    var Keyboard;
-    return Keyboard = {
+    return this.Keyboard = {
       pressed: [],
       initialize: function() {
         document.onkeydown = __bind(function(event) {
@@ -51,7 +49,7 @@
           return this.keyUpEvent(event);
         }, this);
       },
-      isKeyDown: function() {
+      isKeyDown: function(key) {
         if (this.pressed[key] != null) {
           this.pressed[key];
         }

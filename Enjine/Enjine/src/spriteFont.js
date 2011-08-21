@@ -12,9 +12,8 @@
     return child;
   };
   this.module("Enjine", function() {
-    var SpriteFont;
-    return SpriteFont = (function() {
-      __extends(SpriteFont, Drawable);
+    return this.SpriteFont = (function() {
+      __extends(SpriteFont, this.Drawable);
       function SpriteFont(image, letterWidth, letterHeight, letters) {
         this.image = image;
         this.letterWidth = letterWidth;
@@ -62,6 +61,6 @@
         return this;
       };
       return SpriteFont;
-    })();
+    }).call(this);
   });
 }).call(this);

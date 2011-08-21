@@ -4,7 +4,7 @@
 ###
 
 @module("Enjine", ->
-	class AnimationSequence
+	class @AnimationSequence
 		constructor: (@startRow, @startColumn, @endRow, @endColumn) ->
 			@singleFrame = false
 			if @startRow == @endRow and @startColumn == @endColumn
@@ -12,7 +12,7 @@
 )
 
 @module("Enjine", ->
-	class AnimatedSprite extends FrameSprite
+	class @AnimatedSprite extends @FrameSprite
 		lastElapsed: 0
 		framesPerSecond: 1 / 20
 		currentSequence: null

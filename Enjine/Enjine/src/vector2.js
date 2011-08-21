@@ -3,8 +3,7 @@
   	Contains useful functions for making 2D vector math easier.
   	Code by Rob Kleffner, 2011
   */  this.module("Enjine", function() {
-    var Vector2;
-    return Vector2 = (function() {
+    return this.Vector2 = (function() {
       function Vector2(x, y) {
         this.x = x;
         this.y = y;

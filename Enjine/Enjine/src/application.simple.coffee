@@ -5,18 +5,21 @@
 ###
 
 @module("Enjine", ->
-	class Application
+	class @Application
 		canvas: null
 		timer: null
 		stateContext: null
 
-		update: (delta) ->
+		constructor: ->
+			@
+
+		update: (delta) =>
 			@stateContext.update(delta)
 			@canvas.beginDraw()
 			@stateContext.draw(@canvas.betterBuffer)
 			@canvas.endDraw()
 
-		initialize: (canvasId, defaultState, resWidth, resHeight) ->
+		initialize: (canvasId, defaultState, resWidth, resHeight) =>
 			@canvas = new Enjine.GameCanvas()
 			@timer = new Enjine.GameTimer()
 			Enjine.Keyboard.initialize()

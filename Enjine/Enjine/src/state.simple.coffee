@@ -4,7 +4,7 @@
 ###
 
 @module("Enjine", ->
-	class GameStateContext
+	class @GameStateContext
 		constructor: (defaultState) ->
 			@state = null
 			if defaultState?
@@ -24,9 +24,11 @@
 
 		draw: (delta) ->
 			@state?.draw(delta);
+)
 
+@module("Enjine", ->
 	# Base game state class to at least ensure that all the necessary functions exist.
-	class GameState
+	class @GameState
 		enter: ->
 		exit: ->
 		update: ->

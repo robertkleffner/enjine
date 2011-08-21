@@ -1,7 +1,6 @@
 ﻿(function() {
   this.module("Enjine", function() {
-    var Resources;
-    return Resources = {
+    return this.Resources = {
       images: {},
       sounds: {},
       destroy: function() {

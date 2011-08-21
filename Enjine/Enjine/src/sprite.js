@@ -12,9 +12,8 @@
     return child;
   };
   this.module("Enjine", function() {
-    var Sprite;
-    return Sprite = (function() {
-      __extends(Sprite, Drawable);
+    return this.Sprite = (function() {
+      __extends(Sprite, this.Drawable);
       function Sprite() {
         Sprite.__super__.constructor.apply(this, arguments);
       }
@@ -34,6 +33,6 @@
         return this;
       };
       return Sprite;
-    })();
+    }).call(this);
   });
 }).call(this);

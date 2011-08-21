@@ -5,16 +5,14 @@
   */
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   this.module("Enjine", function() {
-    var Buttons;
-    return Buttons = {
+    return this.Buttons = {
       mouseLeft: 0,
       mouseRight: 2,
       mouseWheel: 1
     };
   });
   this.module("Enjine", function() {
-    var Mouse;
-    return Mouse = {
+    return this.Mouse = {
       x: 0,
       y: 0,
       pressed: [],
@@ -22,19 +20,19 @@
       containsMouse: false,
       initialize: function(element) {
         this.element = element;
-        this.element.onmousedown = __bind(function(event) {
+        element.onmousedown = __bind(function(event) {
           return this.pressed[event.button] = true;
         }, this);
-        this.element.onmouseup = __bind(function(event) {
+        element.onmouseup = __bind(function(event) {
           return this.pressed[event.button] = false;
         }, this);
-        this.element.onmousemove = __bind(function(event) {
+        element.onmousemove = __bind(function(event) {
           return this.mouseMoveEvent(event);
         }, this);
-        this.element.onmouseover = __bind(function(event) {
+        element.onmouseover = __bind(function(event) {
           return this.containsMouse = true;
         }, this);
-        return this.element.onmouseout = __bind(function(event) {
+        return element.onmouseout = __bind(function(event) {
           this.containsMouse = false;
           this.x = -1;
           return this.y = -1;
@@ -42,7 +40,7 @@
       },
       isButtonDown: function(key) {
         if (this.pressed[key] != null) {
-          this.pressed[key];
+          return this.pressed[key];
         }
         return false;
       },

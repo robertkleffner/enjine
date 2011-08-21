@@ -5,8 +5,7 @@
   */
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   this.module("Enjine", function() {
-    var GameCanvas;
-    return GameCanvas = (function() {
+    return this.GameCanvas = (function() {
       function GameCanvas() {}
       GameCanvas.prototype.canvas = null;
       GameCanvas.prototype.context2D = null;

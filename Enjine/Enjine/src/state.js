@@ -3,8 +3,7 @@
   	Simple state pattern implementation for game states.
   	Code by Rob Kleffner, 2011
   */  this.module("Enjine", function() {
-    var GameState, GameStateContext;
-    GameStateContext = (function() {
+    return this.GameStateContext = (function() {
       function GameStateContext(defaultState) {
         this.state = null;
         if (defaultState != null) {
@@ -31,7 +30,9 @@
       };
       return GameStateContext;
     })();
-    return GameState = (function() {
+  });
+  this.module("Enjine", function() {
+    return this.GameState = (function() {
       function GameState() {}
       GameState.prototype.enter = function() {};
       GameState.prototype.exit = function() {};

@@ -4,7 +4,7 @@
 ###
 
 @module("Enjine", ->
-	class SpriteFont extends Drawable
+	class @SpriteFont extends @Drawable
 		constructor: (@image, @letterWidth, @letterHeight, @letters) ->
 			@letterSpacing = 0
 			@lineHeight = 0

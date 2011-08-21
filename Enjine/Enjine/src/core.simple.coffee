@@ -6,11 +6,9 @@
 
 # module definition helper based on the one by @jashkenas on github
 window.module = (name, func) ->
-	if not @[name]?
+	unless @[name]?
 		this[name] = {}
-	if not @[name].module?
+	unless @[name].module?
 		@[name].module = window.module
 	if func?
 		func.apply(this[name], [])
-
-@module("Enjine")

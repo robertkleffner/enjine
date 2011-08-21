@@ -4,7 +4,7 @@
 ###
 
 @module("Enjine", ->
-	class Vector2
+	class @Vector2
 		constructor: (@x, @y) ->
 
 		equals: (vec) ->

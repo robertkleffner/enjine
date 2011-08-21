@@ -4,7 +4,7 @@
 ###
 
 @module("Enjine", ->
-	class GameTimer
+	class @GameTimer
 		framesPerSecond: 1000 / 30
 		lastTime: 0
 		intervalFunc: null

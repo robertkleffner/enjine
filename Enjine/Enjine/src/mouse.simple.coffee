@@ -4,14 +4,14 @@
 ###
 
 @module("Enjine", ->
-	Buttons =
+	@Buttons =
 		mouseLeft: 0
 		mouseRight: 2
 		mouseWheel: 1
 )
 
 @module("Enjine", ->
-	Mouse =
+	@Mouse =
 		x: 0
 		y: 0
 		pressed: []
@@ -20,15 +20,15 @@
 
 		initialize: (element) ->
 			@element = element
-			@element.onmousedown = (event) => @pressed[event.button] = true
-			@element.onmouseup = (event) => @pressed[event.button] = false
-			@element.onmousemove = (event) => @mouseMoveEvent(event)
-			@element.onmouseover = (event) => @containsMouse = true
-			@element.onmouseout = (event) => @containsMouse = false; @x = -1; @y = -1;
+			element.onmousedown = (event) => @pressed[event.button] = true
+			element.onmouseup = (event) => @pressed[event.button] = false
+			element.onmousemove = (event) => @mouseMoveEvent(event)
+			element.onmouseover = (event) => @containsMouse = true
+			element.onmouseout = (event) => @containsMouse = false; @x = -1; @y = -1;
 
 		isButtonDown: (key) ->
 			if @pressed[key]?
-				@pressed[key]
+				return @pressed[key]
 			false
 
 		mouseMoveEvent: (event) ->

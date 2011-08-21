@@ -4,7 +4,7 @@
 ###
 
 @module("Enjine", ->
-	class FrameSprite extends Sprite
+	class @FrameSprite extends @Sprite
 		frameX: 0
 		frameY: 0
 		frameWidth: 0

@@ -4,7 +4,7 @@
 ###
 
 @module("Enjine", ->
-	Keys =
+	@Keys =
 		a: 65
 		b: 66
 		c: 67
@@ -38,14 +38,14 @@
 )
 
 @module("Enjine", ->
-	Keyboard =
+	@Keyboard =
 		pressed: []
 		
 		initialize: ->
 			document.onkeydown = (event) => @keyDownEvent(event)
 			document.onkeyup = (event) => @keyUpEvent(event)
 		
-		isKeyDown: ->
+		isKeyDown: (key) ->
 			if @pressed[key]?
 				@pressed[key]
 			false
