@@ -1,7 +1,7 @@
 ﻿(function() {
   /*
-  	Class that helps to manage mouse input.
-  	Code by Rob Kleffner, 2011
+    Class that helps to manage mouse input.
+    Code by Rob Kleffner, 2011
   */
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   this.module("Enjine", function() {
@@ -16,6 +16,7 @@
       x: 0,
       y: 0,
       pressed: [],
+      wasPressed: [],
       element: null,
       containsMouse: false,
       initialize: function(element) {
@@ -44,6 +45,12 @@
         }
         return false;
       },
+      wasButtonDown: function(key) {
+        if (this.wasPressed[key] != null) {
+          return this.wasPressed[key] && !this.pressed[key];
+        }
+        return false;
+      },
       mouseMoveEvent: function(event) {
         var obj, _results;
         this.x = event.pageX;
@@ -58,6 +65,9 @@
           }
           return _results;
         }
+      },
+      updatePressed: function() {
+        return this.wasPressed = this.pressed.slice(0);
       }
     };
   });

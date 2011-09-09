@@ -1,7 +1,7 @@
 ﻿(function() {
   /*
-  	Class that helps to manage keyboard input.
-  	Code by Rob Kleffner, 2011
+    Class that helps to manage keyboard input.
+    Code by Rob Kleffner, 2011
   */
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   this.module("Enjine", function() {
@@ -41,6 +41,7 @@
   this.module("Enjine", function() {
     return this.Keyboard = {
       pressed: [],
+      wasPressed: [],
       initialize: function() {
         document.onkeydown = __bind(function(event) {
           return this.keyDownEvent(event);
@@ -51,7 +52,13 @@
       },
       isKeyDown: function(key) {
         if (this.pressed[key] != null) {
-          this.pressed[key];
+          return this.pressed[key];
+        }
+        return false;
+      },
+      wasKeyDown: function(key) {
+        if (this.wasPressed[key] != null) {
+          return this.wasPressed[key] && !this.pressed[key];
         }
         return false;
       },
@@ -60,6 +67,9 @@
       },
       keyUpEvent: function(event) {
         return this.pressed[event.keyCode] = false;
+      },
+      updatePressed: function() {
+        return this.wasPressed = this.pressed.slice(0);
       }
     };
   });

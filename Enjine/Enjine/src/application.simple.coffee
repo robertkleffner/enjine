@@ -1,33 +1,36 @@
 ﻿###
-	A basic wrapper to get a game engine setup.
-	Will be fine for most games.
-	Code by Rob Kleffner, 2011
+  A basic wrapper to get a game engine setup.
+  Will be fine for most games.
+  Code by Rob Kleffner, 2011
 ###
 
 @module("Enjine", ->
-	class @Application
-		canvas: null
-		timer: null
-		stateContext: null
+  class @Application
+    canvas: null
+    timer: null
+    stateContext: null
 
-		constructor: ->
-			@
+    constructor: ->
+      @
 
-		update: (delta) =>
-			@stateContext.update(delta)
-			@canvas.beginDraw()
-			@stateContext.draw(@canvas.betterBuffer)
-			@canvas.endDraw()
+    update: (delta) =>
+      @stateContext.update(delta)
+      @canvas.beginDraw()
+      @stateContext.draw(@canvas.betterBuffer)
+      @canvas.endDraw()
 
-		initialize: (canvasId, defaultState, resWidth, resHeight) =>
-			@canvas = new Enjine.GameCanvas()
-			@timer = new Enjine.GameTimer()
-			Enjine.Keyboard.initialize()
-			Enjine.Mouse.initialize(document.getElementById(canvasId))
-			@canvas.initialize(canvasId, resWidth, resHeight)
-			@timer.updateObject = this
+      Enjine.Keyboard.updatePressed()
+      Enjine.Mouse.updatePressed()
 
-			@stateContext = new Enjine.GameStateContext(defaultState)
+    initialize: (canvasId, defaultState, resWidth, resHeight) =>
+      @canvas = new Enjine.GameCanvas()
+      @timer = new Enjine.GameTimer()
+      Enjine.Keyboard.initialize()
+      Enjine.Mouse.initialize(document.getElementById(canvasId))
+      @canvas.initialize(canvasId, resWidth, resHeight)
+      @timer.updateObject = this
 
-			@timer.start()
+      @stateContext = new Enjine.GameStateContext(defaultState)
+
+      @timer.start()
 )

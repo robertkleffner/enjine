@@ -1,8 +1,8 @@
 ﻿(function() {
   /*
-  	A basic wrapper to get a game engine setup.
-  	Will be fine for most games.
-  	Code by Rob Kleffner, 2011
+    A basic wrapper to get a game engine setup.
+    Will be fine for most games.
+    Code by Rob Kleffner, 2011
   */
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   this.module("Enjine", function() {
@@ -19,7 +19,9 @@
         this.stateContext.update(delta);
         this.canvas.beginDraw();
         this.stateContext.draw(this.canvas.betterBuffer);
-        return this.canvas.endDraw();
+        this.canvas.endDraw();
+        Enjine.Keyboard.updatePressed();
+        return Enjine.Mouse.updatePressed();
       };
       Application.prototype.initialize = function(canvasId, defaultState, resWidth, resHeight) {
         this.canvas = new Enjine.GameCanvas();
