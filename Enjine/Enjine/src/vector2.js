@@ -1,15 +1,19 @@
 ﻿(function() {
   /*
-  	Contains useful functions for making 2D vector math easier.
-  	Code by Rob Kleffner, 2011
+    Contains useful functions for making 2D vector math easier.
+    Code by Rob Kleffner, 2011
   */  this.module("Enjine", function() {
     return this.Vector2 = (function() {
       function Vector2(x, y) {
         this.x = x;
         this.y = y;
       }
-      Vector2.prototype.equals = function(vec) {
-        return this.x === vec.x && this.y === vec.y;
+      Vector2.prototype.equals = function(vecOrX, y) {
+        if (vecOrX instanceof Enjine.Vector2) {
+          return this.x === vecOrX.x && this.y === vecOrX.y;
+        } else {
+          return this.x === vecOrX && this.y === y;
+        }
       };
       Vector2.prototype.dot = function(vec) {
         return this.x * vec.x + this.y * vec.y;
